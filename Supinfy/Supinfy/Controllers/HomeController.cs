@@ -11,14 +11,6 @@ namespace Supinfy.Controllers
     {
         public ActionResult Index()
         {
-            UserDAO.AddUser(new Models.User
-            {
-                Email = "toto@toto.com",
-                Name = "toto",
-                Nickname = "toto",
-                Password = ""
-            });
-            var test = UserDAO.GetAll();
             return View();
         }
 
