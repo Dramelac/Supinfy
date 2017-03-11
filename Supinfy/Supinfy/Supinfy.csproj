@@ -157,12 +157,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DAL\DataContext.cs" />
+    <Compile Include="DAL\UserDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703111809269_InitialDb.cs" />
-    <Compile Include="Migrations\201703111809269_InitialDb.Designer.cs">
-      <DependentUpon>201703111809269_InitialDb.cs</DependentUpon>
+    <Compile Include="Migrations\201703112012402_InitialDb.cs" />
+    <Compile Include="Migrations\201703112012402_InitialDb.Designer.cs">
+      <DependentUpon>201703112012402_InitialDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities.cs" />
@@ -220,8 +222,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201703111809269_InitialDb.resx">
-      <DependentUpon>201703111809269_InitialDb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703112012402_InitialDb.resx">
+      <DependentUpon>201703112012402_InitialDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

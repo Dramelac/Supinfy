@@ -13,7 +13,7 @@ namespace Supinfy.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201703111809269_InitialDb"; }
+            get { return "201703112012402_InitialDb"; }
         }
         
         string IMigrationMetadata.Source

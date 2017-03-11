@@ -11,7 +11,7 @@ namespace Supinfy.Migrations
                 "dbo.Users",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Guid(nullable: false, identity: true, defaultValueSql: "newsequentialid()"),
                         Name = c.String(),
                         Nickname = c.String(),
                         Password = c.String(),
