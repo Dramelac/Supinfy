@@ -1,4 +1,5 @@
 ﻿using Supinfy.DAL;
+using Supinfy.Utils;
 using Supinfy.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace Supinfy.Controllers
         {
             if (ModelState.IsValid && UserDAO.CheckAuth(form))
             {
-                Session["UserMail"] = form.Email;
+                Session[SessionKey.UserMail] = form.Email;
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -39,7 +40,7 @@ namespace Supinfy.Controllers
         {
             if (ModelState.IsValid && UserDAO.AddUser(form))
             {
-                Session["UserMail"] = form.Email;
+                Session[SessionKey.UserMail] = form.Email;
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -50,7 +51,7 @@ namespace Supinfy.Controllers
 
         public ActionResult Logout()
         {
-            Session["UserMail"] = null;
+            Session[SessionKey.UserMail] = null;
             return RedirectToAction("Index", "Home");
         }
     }
