@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using Supinfy.Models;
 
 namespace Supinfy.ViewModel
 {
@@ -15,7 +16,7 @@ namespace Supinfy.ViewModel
         [Required(ErrorMessage = "NickName is required")]
         [DataType(DataType.Text)]
         public string NickName { get; set; }
-        
+
         [DataType(DataType.Text)]
         public string FirstName { get; set; }
 
@@ -25,5 +26,18 @@ namespace Supinfy.ViewModel
         [Required(ErrorMessage = "Password is required")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        public static UserVM ModelToVm(User user)
+        {
+            return user == null
+                ? new UserVM()
+                : new UserVM
+                {
+                    NickName = user.Nickname,
+                    Email = user.Email,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName
+                };
+        }
     }
 }

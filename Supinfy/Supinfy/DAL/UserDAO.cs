@@ -3,7 +3,6 @@ using Supinfy.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Helpers;
 
 namespace Supinfy.DAL
@@ -15,17 +14,11 @@ namespace Supinfy.DAL
             return DataContext.Instance.Users.ToList();
         }
 
-        public static void AddUser(User user)
-        {
-            DataContext.Instance.Users.Add(user);
-            DataContext.Instance.SaveChanges();
-        }
-
         public static bool AddUser(UserVM model)
         {
             try
             {
-                User user = new User
+                var user = new User
                 {
                     Email = model.Email,
                     FirstName = model.FirstName,
@@ -47,11 +40,17 @@ namespace Supinfy.DAL
         public static bool CheckAuth(LoginVM model)
         {
             var user = DataContext.Instance.Users.FirstOrDefault(u => u.Email == model.Email);
-            if (user != null)
-            {
-                return Crypto.VerifyHashedPassword(user.Password, model.Password);
-            }
-            return false;
+            return user != null && Crypto.VerifyHashedPassword(user.Password, model.Password);
+        }
+
+        public static User GetUserFromUsername(string username)
+        {
+            return DataContext.Instance.Users.FirstOrDefault(u => u.Nickname == username);
+        }
+
+        public static string GetUsernameFromMail(string email)
+        {
+            return DataContext.Instance.Users.Where(u => u.Email == email).Select(u => u.Nickname).FirstOrDefault();
         }
     }
 }
