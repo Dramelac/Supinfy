@@ -7,7 +7,7 @@ namespace Supinfy.Utils
 {
     public static class SessionKey
     {
-        public static readonly string UserMail = "UserMail";
         public static readonly string Username = "Username";
+        public static readonly string UserId = "UserId";
     }
 }

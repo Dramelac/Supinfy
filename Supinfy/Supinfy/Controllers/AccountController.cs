@@ -6,7 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 
 namespace Supinfy.Controllers
 {
@@ -23,8 +25,9 @@ namespace Supinfy.Controllers
         {
             if (ModelState.IsValid && UserDAO.CheckAuth(form))
             {
-                Session[SessionKey.UserMail] = form.Email;
-                Session[SessionKey.Username] = UserDAO.GetUsernameFromMail(form.Email);
+                var user = UserDAO.GetUserFromMail(form.Email);
+                Session[SessionKey.Username] = user.Nickname;
+                Session[SessionKey.UserId] = user.Id;
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -45,8 +48,9 @@ namespace Supinfy.Controllers
         {
             if (ModelState.IsValid && UserDAO.AddUser(form))
             {
-                Session[SessionKey.UserMail] = form.Email;
+                var user = UserDAO.GetUserFromMail(form.Email);
                 Session[SessionKey.Username] = form.NickName;
+                Session[SessionKey.UserId] = user.Id;
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -58,7 +62,7 @@ namespace Supinfy.Controllers
 
         public ActionResult Logout()
         {
-            Session[SessionKey.UserMail] = null;
+            Session[SessionKey.UserId] = null;
             Session[SessionKey.Username] = null;
             return RedirectToAction("Index", "Home");
         }
@@ -72,11 +76,27 @@ namespace Supinfy.Controllers
             }
 
             var vm = ProfileVM.ModelToVm(usr);
-            if (Session[SessionKey.Username] != null && Session[SessionKey.Username].ToString() == user)
+            if (Session[SessionKey.UserId] != null && Equals(Session[SessionKey.UserId], usr.Id))
             {
                 vm.IsOwner = true;
             }
             return View(vm);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult Profile(ProfileVM vm)
+        {
+            if (Session[SessionKey.UserId] == null)
+            {
+                return new HttpNotFoundResult();
+            }
+            vm.Id = (Guid) Session[SessionKey.UserId];
+            UserDAO.UpdateUser(vm);
+
+            var resultvm = ProfileVM.ModelToVm(UserDAO.GetUser(vm.Id));
+            resultvm.IsOwner = true;
+            return View(resultvm);
+
         }
     }
 }

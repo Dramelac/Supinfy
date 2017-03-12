@@ -9,10 +9,11 @@ namespace Supinfy.ViewModel
 {
     public class ProfileVM
     {
+        public Guid Id { get; set; }
+
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         
-        [DataType(DataType.Text)]
         public string NickName { get; set; }
 
         [DataType(DataType.Text)]
@@ -38,6 +39,7 @@ namespace Supinfy.ViewModel
                 ? new ProfileVM()
                 : new ProfileVM
                 {
+                    Id = user.Id,
                     NickName = user.Nickname,
                     Email = user.Email,
                     FirstName = user.FirstName,
