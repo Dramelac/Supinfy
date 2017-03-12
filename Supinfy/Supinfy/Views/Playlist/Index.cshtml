@@ -1,6 +1,9 @@
-﻿
+﻿@model Supinfy.ViewModel.PlaylistIndexVM
 @{
     ViewBag.Title = "title";
 }
 
 <h2>My playlist</h2>
+
+@{ Html.RenderPartial("CreateForm");}
+

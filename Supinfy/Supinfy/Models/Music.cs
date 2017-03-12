@@ -21,8 +21,7 @@ namespace Supinfy.Models
         public int PlayCount { get; set; }
 
         public virtual ICollection<Playlist> Playlists { get; set; }
-
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        
         public DateTime CreatedDate { get; set; }
 
     }

@@ -13,8 +13,7 @@ namespace Supinfy.Models
         public Guid Id { get; set; }
 
         public string Name { get; set; }
-
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        
         public DateTime CreatedDate { get; set; }
 
         public virtual ICollection<Music> Musics { get; set; }

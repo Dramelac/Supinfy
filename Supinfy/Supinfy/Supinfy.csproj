@@ -191,6 +191,10 @@
     <Compile Include="Migrations\201703121834169_AddUserDateRole.Designer.cs">
       <DependentUpon>201703121834169_AddUserDateRole.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703121929468_FixDateField.cs" />
+    <Compile Include="Migrations\201703121929468_FixDateField.Designer.cs">
+      <DependentUpon>201703121929468_FixDateField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities.cs" />
     <Compile Include="Models\Playlist.cs" />
@@ -199,7 +203,10 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\SessionKey.cs" />
+    <Compile Include="ViewModel\CreatePlaylistVM.cs" />
     <Compile Include="ViewModel\LoginVM.cs" />
+    <Compile Include="ViewModel\PlaylistIndexVM.cs" />
+    <Compile Include="ViewModel\PlaylistVM.cs" />
     <Compile Include="ViewModel\ProfileVM.cs" />
     <Compile Include="ViewModel\UserVM.cs" />
   </ItemGroup>
@@ -253,6 +260,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
     <Content Include="Views\Playlist\Index.cshtml" />
+    <Content Include="Views\Playlist\CreateForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -280,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703121834169_AddUserDateRole.resx">
       <DependentUpon>201703121834169_AddUserDateRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703121929468_FixDateField.resx">
+      <DependentUpon>201703121929468_FixDateField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
