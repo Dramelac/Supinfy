@@ -14,10 +14,15 @@ namespace Supinfy.Models
 
         public string Name { get; set; }
 
-        public virtual ICollection<Music> Musics { get; set; }
-
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime CreatedDate { get; set; }
+
+        public virtual ICollection<Music> Musics { get; set; }
+
+        public virtual User Owner { get; set; }
+
+        [ForeignKey("Owner")]
+        public Guid OwnerId { get; set; }
 
     }
 }
