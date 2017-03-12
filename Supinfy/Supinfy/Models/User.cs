@@ -22,6 +22,10 @@ namespace Supinfy.Models
 
         public string Email { get; set; }
 
+        public DateTime CreationDateTime { get; set; }
+
+        public Role Role { get; set; }
+
         public virtual ICollection<Playlist> Playlists { get; set; }
 
     }

@@ -20,6 +20,8 @@ namespace Supinfy.DAL
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Nickname = model.NickName,
+                    CreationDateTime = DateTime.Now,
+                    Role = Role.Standart,
                     Password = Crypto.HashPassword(model.Password)
                 };
                 DataContext.Instance.Users.Add(user);
