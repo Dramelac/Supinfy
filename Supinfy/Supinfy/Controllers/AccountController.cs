@@ -63,14 +63,14 @@ namespace Supinfy.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult Profile(string username)
+        public ActionResult Profile(string user)
         {
-            var user = UserDAO.GetUserFromUsername(username);
-            if (user == null)
+            var usr = UserDAO.GetUserFromUsername(user);
+            if (usr == null)
             {
                 return new HttpNotFoundResult();
             }
-            var vm = UserVM.ModelToVm(user);
+            var vm = UserVM.ModelToVm(usr);
             return View(vm);
         }
     }
