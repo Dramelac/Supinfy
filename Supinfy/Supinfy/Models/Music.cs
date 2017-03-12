@@ -7,22 +7,23 @@ using System.Web;
 
 namespace Supinfy.Models
 {
-    public class User
+    public class Music
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
-        public string FirstName { get; set; }
+        public string Title { get; set; }
 
-        public string LastName { get; set; }
+        public int TrackId { get; set; }
 
-        public string Nickname { get; set; }
-        
-        public string Password { get; set; }
+        public string ArtworkUrl { get; set; }
 
-        public string Email { get; set; }
+        public int PlayCount { get; set; }
 
         public ICollection<Playlist> Playlists { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime CreatedDate { get; set; }
 
     }
 }
