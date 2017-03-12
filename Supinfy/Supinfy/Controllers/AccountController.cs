@@ -67,6 +67,7 @@ namespace Supinfy.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        #region Profile
         public ActionResult Profile(string user)
         {
             var usr = UserDAO.GetUserFromUsername(user);
@@ -98,5 +99,6 @@ namespace Supinfy.Controllers
             return View(resultvm);
 
         }
+        #endregion
     }
 }

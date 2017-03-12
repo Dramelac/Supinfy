@@ -22,7 +22,7 @@ namespace Supinfy.Models
 
         public string Email { get; set; }
 
-        public ICollection<Playlist> Playlists { get; set; }
+        public virtual ICollection<Playlist> Playlists { get; set; }
 
     }
 }

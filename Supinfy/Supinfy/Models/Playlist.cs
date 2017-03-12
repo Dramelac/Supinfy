@@ -14,7 +14,7 @@ namespace Supinfy.Models
 
         public string Name { get; set; }
 
-        public ICollection<Music> Musics { get; set; }
+        public virtual ICollection<Music> Musics { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime CreatedDate { get; set; }

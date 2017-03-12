@@ -77,10 +77,5 @@ namespace Supinfy.DAL
         {
             return DataContext.Instance.Users.Where(u => u.Email == email).Select(u => u.Nickname).FirstOrDefault();
         }
-
-        public static void UpdateUser()
-        {
-            
-        }
     }
 }
