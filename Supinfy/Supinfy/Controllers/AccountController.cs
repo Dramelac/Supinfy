@@ -70,7 +70,12 @@ namespace Supinfy.Controllers
             {
                 return new HttpNotFoundResult();
             }
-            var vm = UserVM.ModelToVm(usr);
+
+            var vm = ProfileVM.ModelToVm(usr);
+            if (Session[SessionKey.Username] != null && Session[SessionKey.Username].ToString() == user)
+            {
+                vm.IsOwner = true;
+            }
             return View(vm);
         }
     }

@@ -26,18 +26,5 @@ namespace Supinfy.ViewModel
         [Required(ErrorMessage = "Password is required")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-
-        public static UserVM ModelToVm(User user)
-        {
-            return user == null
-                ? new UserVM()
-                : new UserVM
-                {
-                    NickName = user.Nickname,
-                    Email = user.Email,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName
-                };
-        }
     }
 }

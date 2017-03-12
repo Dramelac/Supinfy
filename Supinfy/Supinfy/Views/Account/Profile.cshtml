@@ -1,7 +1,12 @@
-﻿@model Supinfy.ViewModel.UserVM
+﻿@model Supinfy.ViewModel.ProfileVM
 
 @{
     ViewBag.Title = "Pofile";
 }
 
 <h2>Pofile - @Model.NickName</h2>
+
+@if (Model.IsOwner)
+{
+    <h4>Welcome @Model.FirstName @Model.LastName</h4>
+}
