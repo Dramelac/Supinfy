@@ -15,7 +15,7 @@ namespace Supinfy.DAL
 
         public static void CreatePlaylist(Playlist playlist)
         {
-            DataContext.Instance.Playlist.Add(playlist);
+            //DataContext.Instance.Playlist.Add(playlist);
             DataContext.Instance.SaveChanges();
         }
 

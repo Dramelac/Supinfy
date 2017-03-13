@@ -51,9 +51,9 @@ namespace Supinfy.Controllers
                 var playlist = new Playlist
                 {
                     Name = vm.Name,
-                    CreatedDate = DateTime.Now,
-                    OwnerId = (Guid)Session[SessionKey.UserId]
+                    CreatedDate = DateTime.Now
                 };
+                playlist.OwnerId = (Guid) Session[SessionKey.UserId];
                 PlaylistDAO.CreatePlaylist(playlist);
             }
 

@@ -32,6 +32,7 @@ namespace Supinfy.Controllers
             }
             else
             {
+                ModelState.AddModelError("", "Incorrect authentication");
                 return View();
             }
         }
@@ -55,6 +56,7 @@ namespace Supinfy.Controllers
             }
             else
             {
+                ModelState.AddModelError("", "This email or nickname already exists");
                 return View();
             }
         }
