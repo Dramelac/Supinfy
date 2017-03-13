@@ -18,5 +18,31 @@ namespace Supinfy.DAL
             DataContext.Instance.Playlist.Add(playlist);
             DataContext.Instance.SaveChanges();
         }
+
+        public static Playlist GetPlaylist(Guid id)
+        {
+            return DataContext.Instance.Playlist.Find(id);
+        }
+
+        public static bool RemovePlaylist(Playlist playlist)
+        {
+            try
+            {
+                DataContext.Instance.Playlist.Remove(playlist);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+            return true;
+        }
+
+        public static bool RemovePlaylist(Guid id)
+        {
+            var playlist = GetPlaylist(id);
+            if (playlist == null) return false;
+            return RemovePlaylist(playlist);
+        }
     }
 }

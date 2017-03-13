@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Supinfy.DAL;
@@ -39,6 +40,25 @@ namespace Supinfy.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+        
+        public ActionResult Remove(Guid playlistId)
+        {
+            if (Session[SessionKey.UserId] != null)
+            {
+                var playlist = PlaylistDAO.GetPlaylist(playlistId);
+                if (playlist != null && playlist.OwnerId == (Guid) Session[SessionKey.UserId])
+                {
+                    PlaylistDAO.RemovePlaylist(playlist);
+                    //return new HttpStatusCodeResult(HttpStatusCode.OK);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                }
+            }
+            return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
         }
     }
 }

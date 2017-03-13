@@ -21,6 +21,7 @@ namespace Supinfy.ViewModel
             {
                 vm.Playlists.Add(new PlaylistVM
                 {
+                    Id = playlist.Id,
                     Name = playlist.Name,
                     MusicCount = playlist.Musics.Count,
                     OwnerName = playlist.Owner.Nickname,

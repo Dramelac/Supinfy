@@ -15,7 +15,8 @@
         <div class="col-md-4">
             <h2>@Html.DisplayFor(m => playlist.Name)</h2>
             <p>Created by @Html.DisplayFor(m => playlist.OwnerName), this playlist contains @Html.DisplayFor(m => playlist.MusicCount) track@(playlist.MusicCount > 0 ? "s" : "")</p>
-            <i>@Html.Display(playlist.CreationDate.ToShortDateString())</i>
+            <i>@Html.Label(playlist.CreationDate.ToShortDateString())</i><br/>
+            @Html.ActionLink("Remove playlist", "Remove", new { playlistId = playlist.Id})
         </div>
     </div>
 }
