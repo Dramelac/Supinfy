@@ -11,7 +11,7 @@ namespace Supinfy.ViewModel
 
         public string OwnerName { get; set; }
 
-        public string MusicCount { get; set; }
+        public int MusicCount { get; set; }
 
         public DateTime CreationDate { get; set; }
     }

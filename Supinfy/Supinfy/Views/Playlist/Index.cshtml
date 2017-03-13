@@ -1,9 +1,21 @@
-﻿@model Supinfy.ViewModel.PlaylistIndexVM
+﻿@using Supinfy.ViewModel
+@model Supinfy.ViewModel.PlaylistIndexVM
 @{
     ViewBag.Title = "title";
 }
 
 <h2>My playlist</h2>
 
-@{ Html.RenderPartial("CreateForm");}
+@{ Html.RenderPartial("CreateForm", new CreatePlaylistVM());}
 
+@foreach (var playlist in Model.Playlists)
+{
+    <div class="row">
+        <hr/>
+        <div class="col-md-4">
+            <h2>@Html.DisplayFor(m => playlist.Name)</h2>
+            <p>Created by @Html.DisplayFor(m => playlist.OwnerName), this playlist contains @Html.DisplayFor(m => playlist.MusicCount) track@(playlist.MusicCount > 0 ? "s" : "")</p>
+            <i>@Html.Display(playlist.CreationDate.ToShortDateString())</i>
+        </div>
+    </div>
+}

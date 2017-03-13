@@ -19,7 +19,9 @@ namespace Supinfy.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            return View();
+            var user = UserDAO.GetUser((Guid) Session[SessionKey.UserId]);
+            var vm = PlaylistIndexVM.ToVM(user.Playlists);
+            return View(vm);
         }
 
         [HttpPost, ValidateAntiForgeryToken]
@@ -34,7 +36,6 @@ namespace Supinfy.Controllers
                     OwnerId = (Guid)Session[SessionKey.UserId]
                 };
                 PlaylistDAO.CreatePlaylist(playlist);
-                var user = UserDAO.GetUser((Guid)Session[SessionKey.UserId]);
             }
 
             return RedirectToAction("Index");
