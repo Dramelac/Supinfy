@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using Supinfy.DAL;
 using Supinfy.Utils;
 using Supinfy.ViewModel;
@@ -18,7 +19,9 @@ namespace Supinfy.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            return View();
+            var user = UserDAO.GetUser((Guid) Session[SessionKey.UserId]);
+            var vm = FriendVM.ToVM(user);
+            return View(vm);
         }
 
         public ActionResult SearchUser(string search)
@@ -27,14 +30,21 @@ namespace Supinfy.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
+            if (search.IsNullOrWhiteSpace()) return RedirectToAction("Index");
             var resultList = UserDAO.UserSearch(search);
+            resultList.Remove(resultList.FirstOrDefault(r => r.Id == (Guid) Session[SessionKey.UserId]));
             var vm = UserSearchResultVM.ToVM(resultList);
             return View(vm);
         }
 
-        public ActionResult AddToFiend(Guid friendId)
+        public ActionResult AddToFriend(Guid friendId, bool callback = true)
         {
-            return View();
+            if (Session[SessionKey.UserId] == null) return RedirectToAction("Login", "Account");
+
+            var friend = UserDAO.GetUser(friendId);
+            if (friend == null) return RedirectToAction("Index");
+            UserDAO.AddPendingFriend((Guid) Session[SessionKey.UserId], friendId);
+            return callback ? (ActionResult) View() : RedirectToAction("Index");
         }
     }
 }

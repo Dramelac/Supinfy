@@ -190,6 +190,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\SessionKey.cs" />
     <Compile Include="ViewModel\CreatePlaylistVM.cs" />
+    <Compile Include="ViewModel\FriendVM.cs" />
     <Compile Include="ViewModel\LoginVM.cs" />
     <Compile Include="ViewModel\MusicVM.cs" />
     <Compile Include="ViewModel\PlaylistIndexVM.cs" />
@@ -252,6 +253,7 @@
     <Content Include="Views\Playlist\Detail.cshtml" />
     <Content Include="Views\Social\Index.cshtml" />
     <Content Include="Views\Social\SearchUser.cshtml" />
+    <Content Include="Views\Social\AddToFriend.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

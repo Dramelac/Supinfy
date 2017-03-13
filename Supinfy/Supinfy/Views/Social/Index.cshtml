@@ -1,4 +1,4 @@
-﻿
+﻿@model Supinfy.ViewModel.FriendVM
 @{
     ViewBag.Title = "Index";
 }
@@ -21,6 +21,32 @@
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Find" class="btn btn-default" />
             </div>
+        </div>
+    </div>
+}
+<hr />
+<h4>You have @Model.PendingFriends.ResultCount pending friend request.</h4>
+@foreach (var pfriend in Model.PendingFriends.ResultList)
+{
+    <div class="row">
+        <div class="col-md-4">
+            @Html.Label(pfriend.Name)
+            @*TODO : custom to button*@
+            @Html.ActionLink("Accept", "AddToFriend", new { friendId = pfriend.Id, callback = false })
+            @Html.ActionLink("Refuse", "Index", new { friendId = pfriend.Id })
+        </div>
+    </div>
+}
+
+<hr />
+<h4>You have @Model.Friends.ResultCount friend.</h4>
+@foreach (var pfriend in Model.Friends.ResultList)
+{
+    <div class="row">
+        <div class="col-md-4">
+            @Html.Label(pfriend.Name)
+            @*TODO : custom to button*@
+            @Html.ActionLink("Remove friend", "Index", new { friendId = pfriend.Id })
         </div>
     </div>
 }

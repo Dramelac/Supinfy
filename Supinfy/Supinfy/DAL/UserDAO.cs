@@ -97,5 +97,18 @@ namespace Supinfy.DAL
 
             return result;
         }
+
+        public static void AddPendingFriend(Guid userId, Guid friendId)
+        {
+            var user = GetUser(userId);
+            var friend = GetUser(friendId);
+            user.Friends.Add(friend);
+            user.PendingFriends.Remove(friend);
+            if (!friend.Friends.Contains(user))
+            {
+                friend.PendingFriends.Add(user);
+            }
+            DataContext.Instance.SaveChanges();
+        }
     }
 }

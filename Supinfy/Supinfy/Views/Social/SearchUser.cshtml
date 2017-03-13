@@ -5,6 +5,7 @@
 
 <h2>SearchUser</h2>
 
+@Html.ActionLink("Go back", "Index")
 @if (Model.ResultCount == 0)
 {
     <h4>Sorry, any result match with your search</h4>
@@ -16,7 +17,8 @@ else
         <div class="row">
             <hr />
             <div class="col-md-4">
-                <h2>@Html.ActionLink(user.Name, "AddToFiend", new { friendId = user.Id })</h2>
+                @Html.Label(user.Name)
+                @Html.ActionLink("Add a friend", "AddToFriend", new {friendId = user.Id})
             </div>
         </div>
     }
