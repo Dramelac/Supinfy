@@ -9,11 +9,6 @@ namespace Supinfy.Models
 {
     public class User
     {
-        public User()
-        {
-            Playlists = new List<Playlist>();
-        }
-
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
@@ -24,7 +19,7 @@ namespace Supinfy.Models
         [StringLength(450)]
         [Index(IsUnique = true)]
         public string Nickname { get; set; }
-        
+
         public string Password { get; set; }
 
         [StringLength(450)]
@@ -37,5 +32,8 @@ namespace Supinfy.Models
 
         public virtual ICollection<Playlist> Playlists { get; set; }
 
+        public virtual ICollection<User> Friends { get; set; }
+
+        public virtual ICollection<User> PendingFriends { get; set; }
     }
 }

@@ -9,11 +9,6 @@ namespace Supinfy.Models
 {
     public class Playlist
     {
-        public Playlist()
-        {
-            Musics = new List<Music>();
-        }
-
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 

@@ -176,6 +176,10 @@
     <Compile Include="Migrations\201703131105054_ReCreateTables.Designer.cs">
       <DependentUpon>201703131105054_ReCreateTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703131313434_AddFriend.cs" />
+    <Compile Include="Migrations\201703131313434_AddFriend.Designer.cs">
+      <DependentUpon>201703131313434_AddFriend.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities.cs" />
     <Compile Include="Models\Playlist.cs" />
@@ -259,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703131105054_ReCreateTables.resx">
       <DependentUpon>201703131105054_ReCreateTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703131313434_AddFriend.resx">
+      <DependentUpon>201703131313434_AddFriend.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

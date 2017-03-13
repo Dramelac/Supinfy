@@ -23,7 +23,10 @@ namespace Supinfy.DAL
                     Nickname = model.NickName,
                     CreationDateTime = DateTime.Now,
                     Role = Role.Standart,
-                    Password = Crypto.HashPassword(model.Password)
+                    Password = Crypto.HashPassword(model.Password),
+                    Playlists = new List<Playlist>(),
+                    Friends = new List<User>(),
+                    PendingFriends = new List<User>()
                 };
                 DataContext.Instance.Users.Add(user);
                 DataContext.Instance.SaveChanges();
