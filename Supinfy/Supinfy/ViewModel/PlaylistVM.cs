@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Supinfy.Models;
 
 namespace Supinfy.ViewModel
 {
@@ -16,5 +17,25 @@ namespace Supinfy.ViewModel
         public int MusicCount { get; set; }
 
         public DateTime CreationDate { get; set; }
+
+        public List<MusicVM> MusicList { get; set; }
+
+        public static PlaylistVM ToVM(Playlist model)
+        {
+            var result = new PlaylistVM
+            {
+                Id = model.Id,
+                MusicCount = model.Musics.Count,
+                Name = model.Name,
+                OwnerName = model.Owner.Nickname,
+                CreationDate = model.CreatedDate,
+                MusicList = new List<MusicVM>()
+            };
+            foreach (var music in model.Musics)
+            {
+                result.MusicList.Add(MusicVM.ToVM(music));
+            }
+            return result;
+        }
     }
 }

@@ -1,0 +1,33 @@
+﻿@model Supinfy.ViewModel.PlaylistVM
+@{
+    ViewBag.Title = "Detail";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Detail - @Html.DisplayFor(m => Model.Name)</h2>
+        <p>Created by @Html.DisplayFor(m => Model.OwnerName), this playlist contains @Html.DisplayFor(m => Model.MusicCount) track@(Model.MusicCount > 0 ? "s" : "")</p>
+        <i>@Html.Label(Model.CreationDate.ToShortDateString())</i><br />
+        @Html.ActionLink("Remove playlist", "Remove", new { playlistId = Model.Id })
+    </div>
+</div>
+
+@if (Model.MusicCount == 0)
+{
+    <div>
+        <h2>This paylist has no music yet.</h2>
+    </div>
+}
+
+@foreach (var music in Model.MusicList)
+{
+    <div class="row">
+        <hr />
+        <div class="col-md-4">
+            <h2>@Html.DisplayFor(m => music.Title)</h2>
+            <img src="@music.ArtworkUrl" alt="Artwork"/><br />
+            <span>Add on </span><i>@Html.Label(music.CreatedDate.ToShortDateString())</i><br />
+            @Html.ActionLink("Remove form playlist", "RemoveMusic", new { playlistId = Model.Id, musicId = music.Id })
+        </div>
+    </div>
+}

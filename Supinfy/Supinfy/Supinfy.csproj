@@ -186,6 +186,7 @@
     <Compile Include="Utils\SessionKey.cs" />
     <Compile Include="ViewModel\CreatePlaylistVM.cs" />
     <Compile Include="ViewModel\LoginVM.cs" />
+    <Compile Include="ViewModel\MusicVM.cs" />
     <Compile Include="ViewModel\PlaylistIndexVM.cs" />
     <Compile Include="ViewModel\PlaylistVM.cs" />
     <Compile Include="ViewModel\ProfileVM.cs" />
@@ -242,6 +243,7 @@
     <Content Include="Views\Account\Profile.cshtml" />
     <Content Include="Views\Playlist\Index.cshtml" />
     <Content Include="Views\Playlist\CreateForm.cshtml" />
+    <Content Include="Views\Playlist\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

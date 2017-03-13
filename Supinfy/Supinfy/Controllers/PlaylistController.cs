@@ -25,6 +25,24 @@ namespace Supinfy.Controllers
             return View(vm);
         }
 
+        public ActionResult Detail(Guid id)
+        {
+            if (Session[SessionKey.UserId] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var playlist = PlaylistDAO.GetPlaylist(id);
+            if (playlist == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var vm = PlaylistVM.ToVM(playlist);
+
+            return View(vm);
+        }
+
         [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Create(CreatePlaylistVM vm)
         {
@@ -59,6 +77,11 @@ namespace Supinfy.Controllers
                 }
             }
             return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
+        }
+
+        public ActionResult RemoveMusic(Guid playlistId, Guid musicId)
+        {
+            return RedirectToAction("Detail", new {id = playlistId});
         }
 
         public ActionResult Ajax_AddMusic(Guid playlistId, Guid musicId)
