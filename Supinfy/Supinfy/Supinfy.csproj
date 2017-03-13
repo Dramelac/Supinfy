@@ -171,29 +171,9 @@
     <Compile Include="Migrations\201703112012402_InitialDb.Designer.cs">
       <DependentUpon>201703112012402_InitialDb.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703112239481_UpdateUserField.cs" />
-    <Compile Include="Migrations\201703112239481_UpdateUserField.Designer.cs">
-      <DependentUpon>201703112239481_UpdateUserField.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703121458447_AddMusicAndPlaylist.cs" />
-    <Compile Include="Migrations\201703121458447_AddMusicAndPlaylist.Designer.cs">
-      <DependentUpon>201703121458447_AddMusicAndPlaylist.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703121500542_ChangePlaylistUserRelation.cs" />
-    <Compile Include="Migrations\201703121500542_ChangePlaylistUserRelation.Designer.cs">
-      <DependentUpon>201703121500542_ChangePlaylistUserRelation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703121811540_UpdateFK.cs" />
-    <Compile Include="Migrations\201703121811540_UpdateFK.Designer.cs">
-      <DependentUpon>201703121811540_UpdateFK.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703121834169_AddUserDateRole.cs" />
-    <Compile Include="Migrations\201703121834169_AddUserDateRole.Designer.cs">
-      <DependentUpon>201703121834169_AddUserDateRole.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703121929468_FixDateField.cs" />
-    <Compile Include="Migrations\201703121929468_FixDateField.Designer.cs">
-      <DependentUpon>201703121929468_FixDateField.cs</DependentUpon>
+    <Compile Include="Migrations\201703131105054_ReCreateTables.cs" />
+    <Compile Include="Migrations\201703131105054_ReCreateTables.Designer.cs">
+      <DependentUpon>201703131105054_ReCreateTables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities.cs" />
@@ -274,23 +254,8 @@
     <EmbeddedResource Include="Migrations\201703112012402_InitialDb.resx">
       <DependentUpon>201703112012402_InitialDb.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703112239481_UpdateUserField.resx">
-      <DependentUpon>201703112239481_UpdateUserField.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703121458447_AddMusicAndPlaylist.resx">
-      <DependentUpon>201703121458447_AddMusicAndPlaylist.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703121500542_ChangePlaylistUserRelation.resx">
-      <DependentUpon>201703121500542_ChangePlaylistUserRelation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703121811540_UpdateFK.resx">
-      <DependentUpon>201703121811540_UpdateFK.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703121834169_AddUserDateRole.resx">
-      <DependentUpon>201703121834169_AddUserDateRole.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703121929468_FixDateField.resx">
-      <DependentUpon>201703121929468_FixDateField.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703131105054_ReCreateTables.resx">
+      <DependentUpon>201703131105054_ReCreateTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

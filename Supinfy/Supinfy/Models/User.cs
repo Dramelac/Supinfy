@@ -21,10 +21,14 @@ namespace Supinfy.Models
 
         public string LastName { get; set; }
 
+        [StringLength(450)]
+        [Index(IsUnique = true)]
         public string Nickname { get; set; }
         
         public string Password { get; set; }
 
+        [StringLength(450)]
+        [Index(IsUnique = true)]
         public string Email { get; set; }
 
         public DateTime CreationDateTime { get; set; }

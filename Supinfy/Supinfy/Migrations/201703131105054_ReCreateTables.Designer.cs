@@ -7,13 +7,13 @@ namespace Supinfy.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddMusicAndPlaylist : IMigrationMetadata
+    public sealed partial class ReCreateTables : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddMusicAndPlaylist));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ReCreateTables));
         
         string IMigrationMetadata.Id
         {
-            get { return "201703121458447_AddMusicAndPlaylist"; }
+            get { return "201703131105054_ReCreateTables"; }
         }
         
         string IMigrationMetadata.Source
