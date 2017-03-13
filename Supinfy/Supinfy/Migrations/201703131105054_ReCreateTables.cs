@@ -11,7 +11,7 @@ namespace Supinfy.Migrations
                 "dbo.Musics",
                 c => new
                     {
-                        Id = c.Guid(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false, identity: true, defaultValueSql: "newsequentialid()"),
                         Title = c.String(),
                         TrackId = c.Int(nullable: false),
                         ArtworkUrl = c.String(),
@@ -24,7 +24,7 @@ namespace Supinfy.Migrations
                 "dbo.Playlists",
                 c => new
                     {
-                        Id = c.Guid(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false, identity: true, defaultValueSql: "newsequentialid()"),
                         Name = c.String(),
                         CreatedDate = c.DateTime(nullable: false),
                         OwnerId = c.Guid(nullable: false),
