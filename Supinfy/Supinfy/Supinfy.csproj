@@ -162,6 +162,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlaylistController.cs" />
     <Compile Include="DAL\DataContext.cs" />
+    <Compile Include="DAL\MusicDAO.cs" />
     <Compile Include="DAL\PlaylistDAO.cs" />
     <Compile Include="DAL\UserDAO.cs" />
     <Compile Include="Global.asax.cs">
