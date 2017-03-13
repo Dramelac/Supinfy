@@ -83,5 +83,19 @@ namespace Supinfy.DAL
         {
             return DataContext.Instance.Users.Where(u => u.Email == email).Select(u => u.Nickname).FirstOrDefault();
         }
+
+        public static List<User> UserSearch(string query, int resultCount = 100)
+        {
+            var result = new List<User>();
+
+            result.AddRange(DataContext.Instance.Users.Where(u => 
+                    u.Nickname.Contains(query) ||
+                    u.FirstName.Contains(query) ||
+                    u.Email.Contains(query) ||
+                    u.LastName.Contains(query))
+                .Take(resultCount));
+
+            return result;
+        }
     }
 }

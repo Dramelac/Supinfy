@@ -159,6 +159,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\SocialController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlaylistController.cs" />
     <Compile Include="DAL\DataContext.cs" />
@@ -194,6 +195,7 @@
     <Compile Include="ViewModel\PlaylistIndexVM.cs" />
     <Compile Include="ViewModel\PlaylistVM.cs" />
     <Compile Include="ViewModel\ProfileVM.cs" />
+    <Compile Include="ViewModel\UserSearchResultVM.cs" />
     <Compile Include="ViewModel\UserVM.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -248,6 +250,8 @@
     <Content Include="Views\Playlist\Index.cshtml" />
     <Content Include="Views\Playlist\CreateForm.cshtml" />
     <Content Include="Views\Playlist\Detail.cshtml" />
+    <Content Include="Views\Social\Index.cshtml" />
+    <Content Include="Views\Social\SearchUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
