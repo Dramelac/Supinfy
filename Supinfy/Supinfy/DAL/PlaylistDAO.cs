@@ -44,5 +44,18 @@ namespace Supinfy.DAL
             if (playlist == null) return false;
             return RemovePlaylist(playlist);
         }
+
+        public static bool AddMusicToPlaylist(Guid playlistId, Guid musicId)
+        {
+            var playlist = GetPlaylist(playlistId);
+            var music = MusicDAO.GetMusic(musicId);
+            if (playlist == null || music == null)
+            {
+                return false;
+            }
+            playlist.Musics.Add(music);
+            DataContext.Instance.SaveChanges();
+            return true;
+        }
     }
 }

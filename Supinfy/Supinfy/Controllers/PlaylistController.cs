@@ -60,5 +60,22 @@ namespace Supinfy.Controllers
             }
             return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
         }
+
+        public ActionResult Ajax_AddMusic(Guid playlistId, Guid musicId)
+        {
+            if (Session[SessionKey.UserId] != null)
+            {
+                var playlist = PlaylistDAO.GetPlaylist(playlistId);
+                if (playlist != null && playlist.OwnerId == (Guid)Session[SessionKey.UserId])
+                {
+                    if (PlaylistDAO.AddMusicToPlaylist(playlistId, musicId))
+                    {
+                        return new HttpStatusCodeResult(HttpStatusCode.OK);
+                    }
+                }
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+            return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
+        }
     }
 }
