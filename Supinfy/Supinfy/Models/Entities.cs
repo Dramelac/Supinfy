@@ -9,8 +9,8 @@ namespace Supinfy.Models
     public class Entities : DbContext
     {
         public DbSet<User> Users { get; set; }
-        public DbSet<Music> Music { get; set; }
-        public DbSet<Playlist> Playlist { get; set; }
-        public DbSet<Friend> Friend { get; set; }
+        public DbSet<Music> Musics { get; set; }
+        public DbSet<Playlist> Playlists { get; set; }
+        public DbSet<FriendRequest> FriendRequests { get; set; }
     }
 }

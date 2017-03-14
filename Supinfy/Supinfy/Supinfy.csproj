@@ -169,21 +169,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703112012402_InitialDb.cs" />
-    <Compile Include="Migrations\201703112012402_InitialDb.Designer.cs">
-      <DependentUpon>201703112012402_InitialDb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703131105054_ReCreateTables.cs" />
-    <Compile Include="Migrations\201703131105054_ReCreateTables.Designer.cs">
-      <DependentUpon>201703131105054_ReCreateTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703141416271_AddFriendModel.cs" />
-    <Compile Include="Migrations\201703141416271_AddFriendModel.Designer.cs">
-      <DependentUpon>201703141416271_AddFriendModel.cs</DependentUpon>
+    <Compile Include="Migrations\201703141600429_InitialDb.cs" />
+    <Compile Include="Migrations\201703141600429_InitialDb.Designer.cs">
+      <DependentUpon>201703141600429_InitialDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities.cs" />
-    <Compile Include="Models\Friend.cs" />
+    <Compile Include="Models\FriendRequest.cs" />
     <Compile Include="Models\Playlist.cs" />
     <Compile Include="Models\Music.cs" />
     <Compile Include="Models\FriendStatus.cs" />
@@ -266,14 +258,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201703112012402_InitialDb.resx">
-      <DependentUpon>201703112012402_InitialDb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703131105054_ReCreateTables.resx">
-      <DependentUpon>201703131105054_ReCreateTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703141416271_AddFriendModel.resx">
-      <DependentUpon>201703141416271_AddFriendModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703141600429_InitialDb.resx">
+      <DependentUpon>201703141600429_InitialDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

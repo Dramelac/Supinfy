@@ -7,13 +7,13 @@ namespace Supinfy.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class ReCreateTables : IMigrationMetadata
+    public sealed partial class InitialDb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ReCreateTables));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialDb));
         
         string IMigrationMetadata.Id
         {
-            get { return "201703131105054_ReCreateTables"; }
+            get { return "201703141600429_InitialDb"; }
         }
         
         string IMigrationMetadata.Source

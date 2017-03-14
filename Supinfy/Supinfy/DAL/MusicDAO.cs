@@ -10,12 +10,12 @@ namespace Supinfy.DAL
     {
         public static Music GetMusic(Guid id)
         {
-            return DataContext.Instance.Music.Find(id);
+            return DataContext.Instance.Musics.Find(id);
         }
 
         public static void AddMusic(Music music)
         {
-            DataContext.Instance.Music.Add(music);
+            DataContext.Instance.Musics.Add(music);
             DataContext.Instance.SaveChanges();
         }
     }

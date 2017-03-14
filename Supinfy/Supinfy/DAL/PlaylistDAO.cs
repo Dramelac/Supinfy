@@ -10,25 +10,25 @@ namespace Supinfy.DAL
     {
         public static List<Playlist> GetAllPlaylistsFromUserId(Guid userId)
         {
-            return DataContext.Instance.Playlist.Where(p => p.OwnerId == userId).ToList();
+            return DataContext.Instance.Playlists.Where(p => p.OwnerId == userId).ToList();
         }
 
         public static void CreatePlaylist(Playlist playlist)
         {
-            DataContext.Instance.Playlist.Add(playlist);
+            DataContext.Instance.Playlists.Add(playlist);
             DataContext.Instance.SaveChanges();
         }
 
         public static Playlist GetPlaylist(Guid id)
         {
-            return DataContext.Instance.Playlist.Find(id);
+            return DataContext.Instance.Playlists.Find(id);
         }
 
         public static bool RemovePlaylist(Playlist playlist)
         {
             try
             {
-                DataContext.Instance.Playlist.Remove(playlist);
+                DataContext.Instance.Playlists.Remove(playlist);
                 DataContext.Instance.SaveChanges();
             }
             catch (Exception e)
