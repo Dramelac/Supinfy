@@ -25,8 +25,8 @@ namespace Supinfy.DAL
                     Role = Role.Standart,
                     Password = Crypto.HashPassword(model.Password),
                     Playlists = new List<Playlist>(),
-                    Friends = new List<User>(),
-                    PendingFriends = new List<User>()
+                    //Friends = new List<User>(),
+                    //PendingFriends = new List<User>()
                 };
                 DataContext.Instance.Users.Add(user);
                 DataContext.Instance.SaveChanges();
@@ -98,17 +98,17 @@ namespace Supinfy.DAL
             return result;
         }
 
-        public static void AddPendingFriend(Guid userId, Guid friendId)
-        {
-            var user = GetUser(userId);
-            var friend = GetUser(friendId);
-            user.Friends.Add(friend);
-            user.PendingFriends.Remove(friend);
-            if (!friend.Friends.Contains(user))
-            {
-                friend.PendingFriends.Add(user);
-            }
-            DataContext.Instance.SaveChanges();
-        }
+        //public static void AddPendingFriend(Guid userId, Guid friendId)
+        //{
+        //    var user = GetUser(userId);
+        //    var friend = GetUser(friendId);
+        //    user.Friends.Add(friend);
+        //    user.PendingFriends.Remove(friend);
+        //    if (!friend.Friends.Contains(user))
+        //    {
+        //        friend.PendingFriends.Add(user);
+        //    }
+        //    DataContext.Instance.SaveChanges();
+        //}
     }
 }

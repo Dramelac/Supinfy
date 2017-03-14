@@ -177,14 +177,16 @@
     <Compile Include="Migrations\201703131105054_ReCreateTables.Designer.cs">
       <DependentUpon>201703131105054_ReCreateTables.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703131313434_AddFriend.cs" />
-    <Compile Include="Migrations\201703131313434_AddFriend.Designer.cs">
-      <DependentUpon>201703131313434_AddFriend.cs</DependentUpon>
+    <Compile Include="Migrations\201703141416271_AddFriendModel.cs" />
+    <Compile Include="Migrations\201703141416271_AddFriendModel.Designer.cs">
+      <DependentUpon>201703141416271_AddFriendModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities.cs" />
+    <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\Playlist.cs" />
     <Compile Include="Models\Music.cs" />
+    <Compile Include="Models\FriendStatus.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -270,8 +272,8 @@
     <EmbeddedResource Include="Migrations\201703131105054_ReCreateTables.resx">
       <DependentUpon>201703131105054_ReCreateTables.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703131313434_AddFriend.resx">
-      <DependentUpon>201703131313434_AddFriend.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703141416271_AddFriendModel.resx">
+      <DependentUpon>201703141416271_AddFriendModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,13 +7,13 @@ namespace Supinfy.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddFriend : IMigrationMetadata
+    public sealed partial class AddFriendModel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddFriend));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddFriendModel));
         
         string IMigrationMetadata.Id
         {
-            get { return "201703131313434_AddFriend"; }
+            get { return "201703141416271_AddFriendModel"; }
         }
         
         string IMigrationMetadata.Source
