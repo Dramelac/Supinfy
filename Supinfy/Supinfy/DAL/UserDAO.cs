@@ -120,6 +120,34 @@ namespace Supinfy.DAL
             DataContext.Instance.SaveChanges();
         }
 
+        public static void RemoveFriend(Guid userId, Guid friendId)
+        {
+            var user = GetUser(userId);
+            var friend = GetUser(friendId);
+            if (user.Friends.Contains(friend))
+            {
+                user.Friends.Remove(friend);
+                friend.Friends.Remove(user);
+            }
+            else
+            {
+                var request = user.FriendRequests.FirstOrDefault(r => r.InitiatorId == friendId);
+                if (request != null)
+                {
+                    DataContext.Instance.FriendRequests.Remove(request);
+                }
+                else
+                {
+                    request = DataContext.Instance.FriendRequests.FirstOrDefault(r => r.InitiatorId == userId && r.TargetId == friendId);
+                    if (request != null)
+                    {
+                        DataContext.Instance.FriendRequests.Remove(request);
+                    }
+                }
+            }
+            DataContext.Instance.SaveChanges();
+        }
+
         public static List<FriendRequest> GetPendingRequest(Guid userId)
         {
             return DataContext.Instance.FriendRequests.Where(r => r.InitiatorId == userId).ToList();

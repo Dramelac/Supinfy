@@ -26,10 +26,8 @@ namespace Supinfy.Controllers
 
         public ActionResult SearchUser(string search)
         {
-            if (Session[SessionKey.UserId] == null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
+            if (Session[SessionKey.UserId] == null) return RedirectToAction("Login", "Account");
+
             if (search.IsNullOrWhiteSpace()) return RedirectToAction("Index");
             var resultList = UserDAO.UserSearch(search);
             resultList.Remove(resultList.FirstOrDefault(r => r.Id == (Guid)Session[SessionKey.UserId]));
@@ -45,6 +43,16 @@ namespace Supinfy.Controllers
             if (friend == null) return RedirectToAction("Index");
             UserDAO.AddPendingFriend((Guid)Session[SessionKey.UserId], friendId);
             return callback ? (ActionResult)View() : RedirectToAction("Index");
+        }
+
+        public ActionResult RemoveFriend(Guid friendId)
+        {
+            if (Session[SessionKey.UserId] == null) return RedirectToAction("Login", "Account");
+
+            var friend = UserDAO.GetUser(friendId);
+            if (friend == null) return RedirectToAction("Index");
+            UserDAO.RemoveFriend((Guid)Session[SessionKey.UserId], friendId);
+            return RedirectToAction("Index");
         }
     }
 }
