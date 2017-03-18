@@ -40,6 +40,17 @@
 
 <hr />
 <h4>You have @Model.Friends.ResultCount friend.</h4>
+@foreach (var pfriend in Model.WaitingFriends.ResultList)
+{
+    <div class="row">
+        <div class="col-md-4">
+            @Html.Label(pfriend.Name)
+            <i>Waiting for confirmation</i>
+            @*TODO : custom to button*@
+            @Html.ActionLink("Cancel request", "Index", new { friendId = pfriend.Id })
+        </div>
+    </div>
+}
 @foreach (var pfriend in Model.Friends.ResultList)
 {
     <div class="row">

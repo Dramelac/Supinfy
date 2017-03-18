@@ -9,9 +9,7 @@
 @if (Model.IsOwner)
 {
     <h4>Welcome @Model.FirstName @Model.LastName</h4>
-
-    @Html.ActionLink("Go to social pannel", "Index", "Social")
-
+    
     using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
