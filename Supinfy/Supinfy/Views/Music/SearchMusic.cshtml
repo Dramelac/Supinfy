@@ -1,0 +1,26 @@
+﻿@model Supinfy.ViewModel.MusicSearchVM
+@{
+    ViewBag.Title = "SearchMusic";
+}
+
+<h2>SearchMusic</h2>
+
+
+@if (Model.Headers.code != 0)
+{
+    <h4>Error: @Model.Headers.error_message</h4>
+}
+else if (Model.Headers.results_count == 0)
+{
+    <h4>Sorry, any result match with your search</h4>
+
+}
+else
+{
+    foreach (var music in Model.Results)
+    {
+        Html.RenderPartial("MusicBlock", Model.ToVM(music));
+    }
+}
+
+

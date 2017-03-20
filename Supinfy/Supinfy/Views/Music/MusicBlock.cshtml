@@ -1,0 +1,11 @@
+﻿@model Supinfy.ViewModel.MusicVM
+
+<div class="row music" data-id="@Model.TrackId" data-title="@Model.Title" data-artist="@Model.Artist" data-url="@Model.TrackUrl" data-artwork="@Model.ArtworkUrl">
+    <hr />
+    <div class="col-md-3">
+        <img src="@Model.ArtworkUrl" alt="" />
+    </div>
+    <div class="col-md-5">
+        @Html.Raw(HttpUtility.HtmlDecode(Model.Artist)) - @Html.Raw(HttpUtility.HtmlDecode(Model.Title))
+    </div>
+</div>

@@ -14,7 +14,11 @@ namespace Supinfy.Models
 
         public string Title { get; set; }
 
+        public string Artist { get; set; }
+
         public int TrackId { get; set; }
+
+        public string TrackUrl { get; set; }
 
         public string ArtworkUrl { get; set; }
 

@@ -25,6 +25,13 @@
                     <li>@Html.ActionLink("Social", "Index", "Social")</li>
                     <li>@Html.ActionLink("Playlist", "Index", "Playlist")</li>
                 </ul>
+                @using (Html.BeginForm("SearchMusic", "Music", FormMethod.Post, new { @class = "navbar-form navbar-left navbar-input-group" }))
+                {
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="search" placeholder="Search a music">
+                    </div>
+                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                }
                 <ul class="nav navbar-nav navbar-right">
                     @if (Session[SessionKey.UserId] == null)
                     {

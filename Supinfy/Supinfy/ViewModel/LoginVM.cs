@@ -8,7 +8,7 @@ namespace Supinfy.ViewModel
 {
     public class LoginVM
     {
-        [Required(ErrorMessage = "EMail is required")]
+        [Required(ErrorMessage = "Email is required")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
