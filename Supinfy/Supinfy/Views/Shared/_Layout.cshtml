@@ -52,13 +52,21 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
+
         <footer>
             <p>&copy; @DateTime.Now.Year - Supinfy</p>
         </footer>
+        <div id="player_container">
+            <img src="" id="artwork" />
+            <audio hidden controls="controls" id="player">
+            </audio>
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>
