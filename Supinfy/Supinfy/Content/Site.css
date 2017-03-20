@@ -26,3 +26,43 @@ textarea {
 hr {
     border-top: 1px solid #c1c1c1;
 }
+
+.music:hover {
+    background: #e2c2c2;
+    cursor: pointer;
+}
+.music:hover .music_name {
+    color: white;
+}
+.music img {
+    height: 120px;
+}
+.music .music_name {
+    font-size: 19px;
+    padding-top: 15px;
+}
+#player_container {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100%;
+    bottom: 0;
+    height: 80px;
+    background: #1e3e9a;
+    z-index: 100;
+}
+#player_container img {
+    height:80px;
+    margin-left:30px;
+}
+#player_container audio {
+    margin-left:60px;
+     margin-top:24px;
+}
+#player_music_name {
+    color: white;
+    font-size: 16px;
+    line-height: 80px;
+    vertical-align: middle;
+}
