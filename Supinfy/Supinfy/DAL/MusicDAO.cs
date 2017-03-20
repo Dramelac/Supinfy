@@ -12,10 +12,21 @@ namespace Supinfy.DAL
         {
             return DataContext.Instance.Musics.Find(id);
         }
+        public static Music GetMusicByTrackId(int trackId)
+        {
+            return DataContext.Instance.Musics.FirstOrDefault(m => m.TrackId == trackId);
+        }
 
         public static void AddMusic(Music music)
         {
+            music.CreatedDate = DateTime.Now;
             DataContext.Instance.Musics.Add(music);
+            DataContext.Instance.SaveChanges();
+        }
+        public static void IncrementMusic(int trackId)
+        {
+            Music music = DataContext.Instance.Musics.First(m => m.TrackId == trackId);
+            music.PlayCount += 1;
             DataContext.Instance.SaveChanges();
         }
     }
