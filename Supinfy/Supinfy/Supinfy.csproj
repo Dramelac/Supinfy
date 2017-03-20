@@ -159,6 +159,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\MusicController.cs" />
     <Compile Include="Controllers\SocialController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlaylistController.cs" />
@@ -172,6 +173,14 @@
     <Compile Include="Migrations\201703141600429_InitialDb.cs" />
     <Compile Include="Migrations\201703141600429_InitialDb.Designer.cs">
       <DependentUpon>201703141600429_InitialDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703201411292_AddMusicArtist.cs" />
+    <Compile Include="Migrations\201703201411292_AddMusicArtist.Designer.cs">
+      <DependentUpon>201703201411292_AddMusicArtist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703201525184_AddMusicTrackUrl.cs" />
+    <Compile Include="Migrations\201703201525184_AddMusicTrackUrl.Designer.cs">
+      <DependentUpon>201703201525184_AddMusicTrackUrl.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities.cs" />
@@ -190,6 +199,7 @@
     <Compile Include="ViewModel\PlaylistIndexVM.cs" />
     <Compile Include="ViewModel\PlaylistVM.cs" />
     <Compile Include="ViewModel\ProfileVM.cs" />
+    <Compile Include="ViewModel\MusicSearchVM.cs" />
     <Compile Include="ViewModel\UserSearchResultVM.cs" />
     <Compile Include="ViewModel\UserVM.cs" />
   </ItemGroup>
@@ -249,6 +259,8 @@
     <Content Include="Views\Social\Index.cshtml" />
     <Content Include="Views\Social\SearchUser.cshtml" />
     <Content Include="Views\Social\AddToFriend.cshtml" />
+    <Content Include="Views\Music\SearchMusic.cshtml" />
+    <Content Include="Views\Music\MusicBlock.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -261,6 +273,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201703141600429_InitialDb.resx">
       <DependentUpon>201703141600429_InitialDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703201411292_AddMusicArtist.resx">
+      <DependentUpon>201703201411292_AddMusicArtist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703201525184_AddMusicTrackUrl.resx">
+      <DependentUpon>201703201525184_AddMusicTrackUrl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

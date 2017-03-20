@@ -22,3 +22,7 @@ select,
 textarea {
     max-width: 280px;
 }
+
+hr {
+    border-top: 1px solid #c1c1c1;
+}

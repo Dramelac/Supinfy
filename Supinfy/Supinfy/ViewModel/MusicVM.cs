@@ -12,7 +12,11 @@ namespace Supinfy.ViewModel
 
         public string Title { get; set; }
 
+        public string Artist { get; set; }
+
         public int TrackId { get; set; }
+
+        public string TrackUrl { get; set; }
 
         public string ArtworkUrl { get; set; }
 
@@ -24,9 +28,11 @@ namespace Supinfy.ViewModel
             {
                 Id = model.Id,
                 Title = model.Title,
+                Artist = model.Artist,
                 CreatedDate = model.CreatedDate,
                 TrackId = model.TrackId,
-                ArtworkUrl = model.ArtworkUrl
+                ArtworkUrl = model.ArtworkUrl,
+                TrackUrl = model.TrackUrl
             };
         }
     }
