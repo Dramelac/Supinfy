@@ -31,16 +31,25 @@ namespace Supinfy.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-
             var playlist = PlaylistDAO.GetPlaylist(id);
-            if (playlist == null)
+            if (playlist != null)
             {
-                return RedirectToAction("Index");
+                var user = UserDAO.GetUser((Guid)Session[SessionKey.UserId]);
+                var playlistOwner = UserDAO.GetUser(playlist.OwnerId);
+                if (user.Friends.Contains(playlistOwner) || user == playlistOwner)
+                {
+                    var vm = PlaylistVM.ToVM(playlist);
+                    return View(vm);
+                }
+                else
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                }
             }
-
-            var vm = PlaylistVM.ToVM(playlist);
-
-            return View(vm);
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
         }
 
         [HttpPost, ValidateAntiForgeryToken]
@@ -80,9 +89,16 @@ namespace Supinfy.Controllers
             return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
         }
 
-        public ActionResult RemoveMusic(Guid playlistId, Guid musicId)
+        [HttpPost]
+        public ActionResult Ajax_ListPlaylist()
         {
-            return RedirectToAction("Detail", new {id = playlistId});
+            if (Session[SessionKey.UserId] == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
+            }
+            var user = UserDAO.GetUser((Guid)Session[SessionKey.UserId]);
+            var vm = PlaylistIndexVM.ToVM(user.Playlists);
+            return Json(new { playlists = vm.Playlists });
         }
 
         public ActionResult Ajax_AddMusic(Guid playlistId, Guid musicId)
@@ -100,6 +116,11 @@ namespace Supinfy.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
             return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
+        }
+
+        public ActionResult Ajax_RemoveMusic(Guid playlistId, Guid musicId)
+        {
+            return RedirectToAction("Detail", new {id = playlistId});
         }
     }
 }

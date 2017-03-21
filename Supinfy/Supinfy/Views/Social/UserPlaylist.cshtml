@@ -1,0 +1,20 @@
+﻿@model Supinfy.ViewModel.PlaylistIndexVM
+@{
+    ViewBag.Title = "Friend Playlist";
+}
+
+<h2>Friend Playlist</h2>
+
+@foreach (var playlist in Model.Playlists)
+{
+    <div class="row">
+        <hr />
+        <div class="col-md-4">
+            <h2>@Html.ActionLink(playlist.Name, "Detail", "Playlist", new { id = playlist.Id }, null)</h2>
+            <p>Created by @Html.DisplayFor(m => playlist.OwnerName), this playlist contains @Html.DisplayFor(m => playlist.MusicCount) track@(playlist.MusicCount > 0 ? "s" : "")</p>
+            <i>@Html.Label(playlist.CreationDate.ToShortDateString())</i><br />
+        </div>
+    </div>
+}
+
+

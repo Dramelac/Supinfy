@@ -57,6 +57,7 @@
         <div class="col-md-4">
             @Html.Label(pfriend.Name)
             @*TODO : custom to button*@
+            @Html.ActionLink("See user playlists", "UserPlaylist", new { friendId = pfriend.Id })
             @Html.ActionLink("Remove friend", "RemoveFriend", new { friendId = pfriend.Id })
         </div>
     </div>
