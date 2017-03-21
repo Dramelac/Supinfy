@@ -20,5 +20,5 @@
 
 @foreach (var music in Model.MusicList)
 {
-    Html.RenderPartial("MusicBlock", music);
+    Html.RenderPartial("~/Views/Music/MusicBlock.cshtml", music);
 }
