@@ -23,6 +23,16 @@ textarea {
     max-width: 280px;
 }
 
+body{
+    padding-bottom:150px;
+}
+.navbar-fixed-top {
+    background: #58b740;
+    border-color: #3e9429;
+}
+.navbar-brand, .nav li a {
+    color: white!important;
+}
 hr {
     border-top: 1px solid #c1c1c1;
     margin-top: 0px;
@@ -35,7 +45,7 @@ hr {
     height: 120px;
 }
 .music:hover {
-    background: #1bace5;
+    background: #8fd67d;
     cursor: pointer;
     height: 150px;
     padding: 30px 0px;
@@ -52,7 +62,7 @@ hr {
 }
 .music .music_name {
     font-size: 15px;
-    padding-top: 40px;
+    padding-top: 20px;
     transition: all 0.3s ease-in-out;
 
 }
@@ -64,7 +74,7 @@ hr {
     width: 100%;
     bottom: 0;
     height: 80px;
-    background: #1e3e9a;
+    background: #58b740;
     z-index: 100;
 }
 #player_container img {
