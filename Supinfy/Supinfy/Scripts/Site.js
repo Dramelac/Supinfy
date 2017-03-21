@@ -6,7 +6,11 @@
         data: 'id=' + trackId
     });
 }
-$(".music").on("click", function() {
+$(".music").on("click", function (e) {
+    if ($(e.target).hasClass("toPlaylist"))
+    {
+        return;
+    }
     var container = document.getElementById("player_container");
     var player = document.getElementById("player");
     var img = document.getElementById("artwork");
@@ -21,22 +25,6 @@ $(".music").on("click", function() {
     counter(this.dataset.id)
 });
 
-$(".play").on("click", function () {
-    var list = document.getElementsByClassName(".pause");
-    list.forEach(function (a) {
-        a.className = "play glyphicon glyphicon-play";
-    });
-    var play = this;
-    play.className = "pause glyphicon glyphicon-pause";
-
-});
-
-
-$(".pause").on("click", function () {
-    var play = this;
-    play.className = "play glyphicon glyphicon-play";
-
-});
 
 
 
@@ -52,16 +40,16 @@ $(".toPlaylist").on("click", function (e) {
             playlist = result.playlists;
 
             var modalContent = document.getElementsByClassName("modal-body");
+            while (modalContent.firstChild) {
+                modalContent.removeChild(modalContent.firstChild);
+            }
             for (var i = 0; i < playlist.length; i++) {
                 var elem = document.createElement("form");
                 elem.className = "addToPlaylist";
-                elem.action = "/Playlist/Ajax_AddMusic";
-                elem.method = "post";
 
                 var but = document.createElement("input");
                 but.type = "submit";
-                but.value = "submit";
-                but.innerHTML = playlist[i].Name;
+                but.value = playlist[i].Name;
                 but.className = "btn btn-primary";
                 elem.appendChild(but);
 
@@ -80,26 +68,27 @@ $(".toPlaylist").on("click", function (e) {
                 elem.appendChild(mus);
 
                 modalContent[0].appendChild(elem);
+                $(".addToPlaylist").submit(function (e) {
+                    e.preventDefault();
+                    console.log("On y est frere");
+                    $.ajax({
+                        url: ("/Playlist/Ajax_AddMusic"),
+                        type: 'POST',
+                        data: $(this).serialize(),
+
+                        success: function (data) {
+                            alert(decodeURIComponent(("Added to the Playlist")));
+                        }
+
+                    });
+
+                });
+
 
 
             }
         }
 
     });
-
-        $("addToPlaylist").on("submit", function (e) {
-            e.preventDefault();
-            console.log("On y est frere");
-            $.ajax({
-                url: ("/Playlist/Ajax_AddMusic"),
-                type: 'POST',
-                data: $(this).serialize(),
-				 
-                success: function(data) {
-                    alert(decodeURIComponent(("Added to the Playlist")));
-                }
-				 
-            });
-  
-        });
     });
+
