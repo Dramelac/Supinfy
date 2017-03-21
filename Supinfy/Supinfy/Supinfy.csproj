@@ -182,6 +182,10 @@
     <Compile Include="Migrations\201703201525184_AddMusicTrackUrl.Designer.cs">
       <DependentUpon>201703201525184_AddMusicTrackUrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703210903566_UpdateManyToMany.cs" />
+    <Compile Include="Migrations\201703210903566_UpdateManyToMany.Designer.cs">
+      <DependentUpon>201703210903566_UpdateManyToMany.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities.cs" />
     <Compile Include="Models\FriendRequest.cs" />
@@ -279,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703201525184_AddMusicTrackUrl.resx">
       <DependentUpon>201703201525184_AddMusicTrackUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703210903566_UpdateManyToMany.resx">
+      <DependentUpon>201703210903566_UpdateManyToMany.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

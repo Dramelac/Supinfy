@@ -33,7 +33,9 @@ namespace Supinfy.Models
         public virtual ICollection<Playlist> Playlists { get; set; }
         
         public virtual ICollection<User> Friends { get; set; }
-        
+
+        public virtual ICollection<User> ReverseFriends { get; set; }
+
         public virtual ICollection<FriendRequest> FriendRequests { get; set; }
     }
 }
