@@ -21,13 +21,5 @@
 
 @foreach (var music in Model.MusicList)
 {
-    <div class="row">
-        <hr />
-        <div class="col-md-4">
-            <h2>@Html.DisplayFor(m => music.Title)</h2>
-            <img src="@music.ArtworkUrl" alt="Artwork"/><br />
-            <span>Add on </span><i>@Html.Label(music.CreatedDate.ToShortDateString())</i><br />
-            @Html.ActionLink("Remove form playlist", "RemoveMusic", new { playlistId = Model.Id, musicId = music.Id })
-        </div>
-    </div>
+    Html.RenderPartial("MusicBlock", music);
 }

@@ -265,6 +265,7 @@
     <Content Include="Views\Social\AddToFriend.cshtml" />
     <Content Include="Views\Music\SearchMusic.cshtml" />
     <Content Include="Views\Music\MusicBlock.cshtml" />
+    <Content Include="Views\Music\Top100.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

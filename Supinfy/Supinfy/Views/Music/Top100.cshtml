@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Supinfy.ViewModel.MusicVM>
+@{
+    ViewBag.Title = "Top100";
+}
+
+<h2>Top100</h2>
+
+@foreach (var music in Model)
+{
+    Html.RenderPartial("MusicBlock", music);
+}
+

@@ -35,5 +35,15 @@ namespace Supinfy.ViewModel
                 TrackUrl = model.TrackUrl
             };
         }
+
+        public static List<MusicVM> ToListVM(List<Music> musics)
+        {
+            var result = new List<MusicVM>();
+            foreach (var music in musics)
+            {
+                result.Add(ToVM(music));
+            }
+            return result;
+        }
     }
 }

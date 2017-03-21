@@ -29,5 +29,9 @@ namespace Supinfy.DAL
             music.PlayCount += 1;
             DataContext.Instance.SaveChanges();
         }
+        public static List<Music> GetTop100()
+        {
+            return DataContext.Instance.Musics.OrderByDescending(u => u.PlayCount).Take(100).ToList();
+        }
     }
 }

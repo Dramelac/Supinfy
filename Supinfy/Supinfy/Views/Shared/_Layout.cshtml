@@ -24,6 +24,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Social", "Index", "Social")</li>
                     <li>@Html.ActionLink("Playlist", "Index", "Playlist")</li>
+                    <li>@Html.ActionLink("Top100", "Top100", "Music")</li>
                 </ul>
                 @using (Html.BeginForm("SearchMusic", "Music", FormMethod.Post, new { @class = "navbar-form navbar-left navbar-input-group" }))
                 {

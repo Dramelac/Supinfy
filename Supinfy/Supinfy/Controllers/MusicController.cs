@@ -28,7 +28,7 @@ namespace Supinfy.Controllers
 
             if (search == "") return RedirectToAction("Index", "Home");
 
-            string url = "https://api.jamendo.com/v3.0/tracks?client_id=ab5d1fe6&limit=20&search=" + search;
+            string url = "https://api.jamendo.com/v3.0/tracks?client_id=ab5d1fe6&limit=20&audioformat=mp32&search=" + search;
             HttpWebRequest r = (HttpWebRequest)WebRequest.Create(url);
             r.Method = "GET";
             HttpWebResponse res = (HttpWebResponse)r.GetResponse();
@@ -38,6 +38,12 @@ namespace Supinfy.Controllers
             string s = sre.ReadToEnd();
             MusicSearchVM data = JsonConvert.DeserializeObject<MusicSearchVM>(s);
             return View(data);
+        }
+        public ActionResult Top100()
+        {
+            if (Session[SessionKey.UserId] == null) return RedirectToAction("Login", "Account");
+            List<Music> top = MusicDAO.GetTop100();
+            return View(MusicVM.ToListVM(top));
         }
 
         [HttpPost]
