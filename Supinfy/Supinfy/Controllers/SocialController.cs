@@ -31,6 +31,8 @@ namespace Supinfy.Controllers
             if (search.IsNullOrWhiteSpace()) return RedirectToAction("Index");
             var resultList = UserDAO.UserSearch(search);
             resultList.Remove(resultList.FirstOrDefault(r => r.Id == (Guid)Session[SessionKey.UserId]));
+            var user = UserDAO.GetUser((Guid)Session[SessionKey.UserId]);
+            resultList = resultList.Except(user.Friends).ToList();
             var vm = UserSearchResultVM.ToVM(resultList);
             return View(vm);
         }
