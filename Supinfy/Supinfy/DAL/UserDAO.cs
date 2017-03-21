@@ -98,10 +98,11 @@ namespace Supinfy.DAL
             return result;
         }
 
-        public static void AddPendingFriend(Guid userId, Guid friendId)
+        public static bool AddPendingFriend(Guid userId, Guid friendId)
         {
             var user = GetUser(userId);
             var friend = GetUser(friendId);
+            if (friend.FriendRequests.Any(r => r.InitiatorId == userId) || user.Friends.Any(f => f.Id == friendId)) return false;
             var checkRequest = user.FriendRequests.FirstOrDefault(r => r.InitiatorId == friendId);
             if (checkRequest != null)
             {
@@ -118,6 +119,7 @@ namespace Supinfy.DAL
                 });
             }
             DataContext.Instance.SaveChanges();
+            return true;
         }
 
         public static void RemoveFriend(Guid userId, Guid friendId)

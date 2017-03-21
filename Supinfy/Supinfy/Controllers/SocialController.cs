@@ -41,7 +41,7 @@ namespace Supinfy.Controllers
 
             var friend = UserDAO.GetUser(friendId);
             if (friend == null) return RedirectToAction("Index");
-            UserDAO.AddPendingFriend((Guid)Session[SessionKey.UserId], friendId);
+            if (!UserDAO.AddPendingFriend((Guid) Session[SessionKey.UserId], friendId)) callback = false;
             return callback ? (ActionResult)View() : RedirectToAction("Index");
         }
 
