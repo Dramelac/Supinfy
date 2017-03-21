@@ -46,15 +46,28 @@ namespace Supinfy.DAL
             return RemovePlaylist(playlist);
         }
 
-        public static bool AddMusicToPlaylist(Guid playlistId, Guid musicId)
+        public static bool AddMusicToPlaylist(Guid playlistId, int trackId)
         {
             var playlist = GetPlaylist(playlistId);
-            var music = MusicDAO.GetMusic(musicId);
+            var music = DataContext.Instance.Musics.First(m => m.TrackId == trackId);
             if (playlist == null || music == null)
             {
                 return false;
             }
             playlist.Musics.Add(music);
+            DataContext.Instance.SaveChanges();
+            return true;
+        }
+
+        public static bool RemoveMusicFromPlaylist(Guid playlistId, int trackId)
+        {
+            var playlist = GetPlaylist(playlistId);
+            var music = DataContext.Instance.Musics.First(m => m.TrackId == trackId);
+            if (playlist == null || music == null)
+            {
+                return false;
+            }
+            playlist.Musics.Remove(music);
             DataContext.Instance.SaveChanges();
             return true;
         }

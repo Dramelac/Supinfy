@@ -101,26 +101,42 @@ namespace Supinfy.Controllers
             return Json(new { playlists = vm.Playlists });
         }
 
-        public ActionResult Ajax_AddMusic(Guid playlistId, Guid musicId)
+        [HttpPost]
+        public ActionResult Ajax_AddMusic(Guid playlistId, int trackId)
         {
             if (Session[SessionKey.UserId] != null)
             {
                 var playlist = PlaylistDAO.GetPlaylist(playlistId);
                 if (playlist != null && playlist.OwnerId == (Guid)Session[SessionKey.UserId])
                 {
-                    if (PlaylistDAO.AddMusicToPlaylist(playlistId, musicId))
+                    if (PlaylistDAO.AddMusicToPlaylist(playlistId, trackId))
                     {
                         return new HttpStatusCodeResult(HttpStatusCode.OK);
                     }
+                    return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
                 }
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
             return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
         }
 
-        public ActionResult Ajax_RemoveMusic(Guid playlistId, Guid musicId)
+        [HttpPost]
+        public ActionResult Ajax_RemoveMusic(Guid playlistId, int trackId)
         {
-            return RedirectToAction("Detail", new {id = playlistId});
+            if (Session[SessionKey.UserId] != null)
+            {
+                var playlist = PlaylistDAO.GetPlaylist(playlistId);
+                if (playlist != null && playlist.OwnerId == (Guid)Session[SessionKey.UserId])
+                {
+                    if (PlaylistDAO.RemoveMusicFromPlaylist(playlistId, trackId))
+                    {
+                        return new HttpStatusCodeResult(HttpStatusCode.OK);
+                    }
+                    return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
+                }
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+            return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
         }
     }
 }
