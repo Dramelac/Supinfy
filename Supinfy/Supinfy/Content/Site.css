@@ -25,21 +25,36 @@ textarea {
 
 hr {
     border-top: 1px solid #c1c1c1;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
-
+.music
+{
+    padding: 15px 0px 15px 0px;
+    transition: all 0.6s ease-in-out;
+    height: 120px;
+}
 .music:hover {
-    background: #e2c2c2;
+    background: #1bace5;
     cursor: pointer;
+    height: 200px;
+    padding: 30px 0px;
+
 }
 .music:hover .music_name {
     color: white;
+    font-size: 30px;
 }
+
 .music img {
-    height: 120px;
+    height: 90px;
+    vertical-align:middle;
 }
 .music .music_name {
-    font-size: 19px;
-    padding-top: 15px;
+    font-size: 15px;
+    padding-top: 40px;
+    transition: all 0.2s ease-in-out;
+
 }
 #player_container {
     display: none;
@@ -65,4 +80,10 @@ hr {
     font-size: 16px;
     line-height: 80px;
     vertical-align: middle;
+}
+h2
+{
+    font-weight: bold;
+    font-size: 40px;
+    margin-bottom: 40px;
 }

@@ -21,3 +21,27 @@ $(".music").on("click", function() {
     counter(this.dataset.id)
 });
 
+$(".play").on("click", function () {
+    var list = document.getElementsByClassName(".pause");
+    list.forEach(function (a) {
+        a.className = "play glyphicon glyphicon-play";
+    });
+    var play = this;
+    play.className = "pause glyphicon glyphicon-pause";
+
+});
+
+
+$(".pause").on("click", function () {
+    var play = this;
+    play.className = "play glyphicon glyphicon-play";
+
+});
+
+
+
+//(".toPlaylist").on("click", function () {
+    
+//    var modalContent = document.getElementsByClassName("modal-body");
+//    var 
+//})
