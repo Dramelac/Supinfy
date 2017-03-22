@@ -20,7 +20,7 @@ $(".music").on("click", function (e) {
     var title = this.dataset.title;
     music_name_container.innerHTML = artist + " - " + title;
     player.setAttribute("src", this.dataset.url)
-    container.style.display = "block";
+    container.style.bottom = "0px";
     player.play();
     counter(this.dataset.id)
 });

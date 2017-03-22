@@ -12,15 +12,8 @@
         <h3>Search user</h3>
         <div class="form-group">
             <label class="control-label col-md-2">Search query</label>
-            <div class="col-md-10">
-                @Html.Editor("search")
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+                @Html.Editor("search", new { htmlAttributes = new { @class = "form-control" } })
                 <input type="submit" value="Find" class="btn btn-default" />
-            </div>
         </div>
     </div>
 }
@@ -31,9 +24,8 @@
     <div class="row">
         <div class="col-md-4">
             @Html.Label(pfriend.Name)
-            @*TODO : custom to button*@
-            @Html.ActionLink("Accept", "AddToFriend", new { friendId = pfriend.Id, callback = false })
-            @Html.ActionLink("Refuse", "RemoveFriend", new { friendId = pfriend.Id })
+            @Html.ActionLink("Accept", "AddToFriend", new { friendId = pfriend.Id, callback = false, @class = "btn btn-primary" })
+            @Html.ActionLink("Refuse", "RemoveFriend", new { friendId = pfriend.Id }, new { @class = "btn btn-danger" })
         </div>
     </div>
 }
@@ -46,19 +38,19 @@
         <div class="col-md-4">
             @Html.Label(pfriend.Name)
             <i>Waiting for confirmation</i>
-            @*TODO : custom to button*@
-            @Html.ActionLink("Cancel request", "RemoveFriend", new { friendId = pfriend.Id })
+            @Html.ActionLink("Cancel request", "RemoveFriend", new { friendId = pfriend.Id }, new { @class = "btn btn-danger" })
         </div>
     </div>
 }
 @foreach (var pfriend in Model.Friends.ResultList)
 {
     <div class="row">
-        <div class="col-md-4">
-            @Html.Label(pfriend.Name)
-            @*TODO : custom to button*@
-            @Html.ActionLink("See user playlists", "UserPlaylist", new { friendId = pfriend.Id })
-            @Html.ActionLink("Remove friend", "RemoveFriend", new { friendId = pfriend.Id })
+        <div class="col-md-12">
+            <div class="friend-name col-md-2">@pfriend.Name</div>
+            <div class="friend-name col-md-5">
+                @Html.ActionLink("See user playlists", "UserPlaylist", new { friendId = pfriend.Id }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Remove friend", "RemoveFriend", new { friendId = pfriend.Id }, new { @class = "btn btn-danger" })
+            </div>
         </div>
     </div>
 }
