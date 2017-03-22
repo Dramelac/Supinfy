@@ -42,8 +42,8 @@
         <div class="col-md-12">
             <div class="friend-name col-md-2">@pfriend.Name</div>
             <div class="col-md-5">
-                <i>Waiting for confirmation</i>
-                @Html.ActionLink(" Cancel", "RemoveFriend", new { friendId = pfriend.Id }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })
+                <i class="col-md-6 single-line">Waiting for confirmation</i>
+                @Html.ActionLink(" Cancel", "RemoveFriend", new { friendId = pfriend.Id }, new { @class = "btn btn-danger glyphicon glyphicon-trash col-md-4 single-line" })
             </div>
          </div>
     </div>

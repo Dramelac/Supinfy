@@ -72,6 +72,10 @@ namespace Supinfy.Controllers
         #region Profile
         public ActionResult Profile(string user)
         {
+            if (Session[SessionKey.UserId] == null)
+            {
+                return new HttpNotFoundResult();
+            }
             var usr = UserDAO.GetUserFromUsername(user);
             if (usr == null)
             {
@@ -82,7 +86,7 @@ namespace Supinfy.Controllers
             if (Session[SessionKey.UserId] != null && Equals(Session[SessionKey.UserId], usr.Id))
             {
                 vm.IsOwner = true;
-            } else if (usr.Friends.Any(f => f.Id == (Guid) Session[SessionKey.UserId]))
+            } else if (Session[SessionKey.UserId] != null && usr.Friends.Any(f => f.Id == (Guid) Session[SessionKey.UserId]))
             {
                 vm.IsFriend = true;
             }
