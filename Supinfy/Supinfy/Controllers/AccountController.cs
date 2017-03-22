@@ -82,6 +82,9 @@ namespace Supinfy.Controllers
             if (Session[SessionKey.UserId] != null && Equals(Session[SessionKey.UserId], usr.Id))
             {
                 vm.IsOwner = true;
+            } else if (usr.Friends.Any(f => f.Id == (Guid) Session[SessionKey.UserId]))
+            {
+                vm.IsFriend = true;
             }
             return View(vm);
         }

@@ -33,6 +33,8 @@ namespace Supinfy.ViewModel
 
         public bool IsOwner { get; set; }
 
+        public bool IsFriend { get; set; }
+
         public static ProfileVM ModelToVm(User user)
         {
             return user == null
@@ -44,7 +46,8 @@ namespace Supinfy.ViewModel
                     Email = user.Email,
                     FirstName = user.FirstName,
                     LastName = user.LastName,
-                    IsOwner = false
+                    IsOwner = false,
+                    IsFriend = false
                 };
         }
 

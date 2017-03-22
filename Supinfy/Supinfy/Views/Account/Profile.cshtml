@@ -73,7 +73,11 @@
         </div>
     }
 }
+else if (Model.IsFriend)
+{
+    @Html.ActionLink("See user playlist", "UserPlaylist", "Social", new {friendId = Model.Id}, null)
+}
 else
 {
-    <h4>Add to friend</h4>
+    @Html.ActionLink("Add to friend", "AddToFriend", "Social", new { friendId = Model.Id}, null)
 }
