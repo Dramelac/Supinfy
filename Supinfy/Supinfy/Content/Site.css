@@ -43,6 +43,10 @@ hr {
 .playlist-name {
     font-size:25px;
     font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+.playlist:hover .playlist-name {
+    color: white;
 }
 .music, .playlist
 {

@@ -9,8 +9,8 @@
         @Html.Raw(HttpUtility.HtmlDecode(Model.Artist)) - @Html.Raw(HttpUtility.HtmlDecode(Model.Title))
     </div>
     <div class="music-control col-md-3 col-xs-3">
-        <button class="toPlaylist glyphicon glyphicon-plus-sign btn btn-primary" data-toggle="modal" data-target="#modalAddToPlaylist">
-            Add To Playlist
+        <button class="toPlaylist btn btn-primary" data-toggle="modal" data-target="#modalAddToPlaylist">
+            <span class="glyphicon glyphicon-plus-sign"></span>  &nbsp;Add To Playlist
         </button>
     </div>
 </div>

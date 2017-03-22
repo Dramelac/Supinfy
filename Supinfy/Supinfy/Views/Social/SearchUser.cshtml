@@ -19,7 +19,9 @@ else
                 <hr />
                 <br />
                 <div class="friend-name col-md-2">@user.Name</div>
-                @Html.ActionLink(" Add", "AddToFriend", new {friendId = user.Id}, new { @class = "btn btn-success glyphicon glyphicon-plus" })
+                <a href="@Url.Action("AddToFriend", new { friendId = user.Id })" class="btn btn-success">
+                    <span class="glyphicon glyphicon-plus"></span> Add
+                </a>
             </div>
         </div>
     }
