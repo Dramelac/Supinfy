@@ -20,5 +20,25 @@
 
 @foreach (var music in Model.MusicList)
 {
-    Html.RenderPartial("~/Views/Music/MusicBlock.cshtml", music);
+    if (Model.IsOwner)
+    {
+        <hr/>
+        <div class="row music" data-id="@music.TrackId" data-title="@music.Title" data-artist="@music.Artist" data-url="@music.TrackUrl" data-artwork="@music.ArtworkUrl">
+            <div class="col-md-2 col-md-offset-1 col-xs-3">
+                <img src="@music.ArtworkUrl" alt=""/>
+            </div>
+            <div class="col-md-6 col-xs-6 music_name">
+                @Html.Raw(HttpUtility.HtmlDecode(music.Artist)) - @Html.Raw(HttpUtility.HtmlDecode(music.Title))
+            </div>
+            <div class="music-control col-md-3 col-xs-3">
+                <a href="@Url.Action("RemoveMusic", "Playlist", new {playlistId = Model.Id, trackId = music.TrackId})" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-trash"></span> Remove
+                </a>
+            </div>
+        </div>
+    }
+    else
+    {
+        Html.RenderPartial("~/Views/Music/MusicBlock.cshtml", music);
+    }
 }

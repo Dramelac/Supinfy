@@ -20,6 +20,8 @@ namespace Supinfy.ViewModel
 
         public List<MusicVM> MusicList { get; set; }
 
+        public bool IsOwner { get; set; }
+
         public static PlaylistVM ToVM(Playlist model)
         {
             var result = new PlaylistVM
@@ -29,6 +31,7 @@ namespace Supinfy.ViewModel
                 Name = model.Name,
                 OwnerName = model.Owner.Nickname,
                 CreationDate = model.CreatedDate,
+                IsOwner = false,
                 MusicList = new List<MusicVM>()
             };
             foreach (var music in model.Musics)

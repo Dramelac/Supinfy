@@ -7,7 +7,7 @@
     });
 }
 $(".music").on("click", function (e) {
-    if ($(e.target).hasClass("toPlaylist"))
+    if ($(e.target).hasClass("btn"))
     {
         return;
     }

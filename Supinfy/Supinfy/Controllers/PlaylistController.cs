@@ -59,6 +59,7 @@ namespace Supinfy.Controllers
                 if (user.Friends.Contains(playlistOwner) || user == playlistOwner)
                 {
                     var vm = PlaylistVM.ToVM(playlist);
+                    if (vm.OwnerName == user.Nickname) vm.IsOwner = true;
                     return View(vm);
                 }
                 else
@@ -174,9 +175,8 @@ namespace Supinfy.Controllers
             }
             return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
         }
-
-        [HttpPost]
-        public ActionResult Ajax_RemoveMusic(Guid playlistId, int trackId)
+        
+        public ActionResult RemoveMusic(Guid playlistId, int trackId)
         {
             if (Session[SessionKey.UserId] != null)
             {
@@ -185,7 +185,7 @@ namespace Supinfy.Controllers
                 {
                     if (PlaylistDAO.RemoveMusicFromPlaylist(playlistId, trackId))
                     {
-                        return new HttpStatusCodeResult(HttpStatusCode.OK);
+                        return RedirectToAction("Detail", new {id = playlistId});
                     }
                     return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
                 }

@@ -1,0 +1,16 @@
+﻿@model Supinfy.ViewModel.MusicVM
+
+<hr />
+<div class="row music" data-id="@Model.TrackId" data-title="@Model.Title" data-artist="@Model.Artist" data-url="@Model.TrackUrl" data-artwork="@Model.ArtworkUrl">
+    <div class="col-md-2 col-md-offset-1 col-xs-3">
+        <img src="@Model.ArtworkUrl" alt="" />
+    </div>
+    <div class="col-md-6 col-xs-6 music_name">
+        @Html.Raw(HttpUtility.HtmlDecode(Model.Artist)) - @Html.Raw(HttpUtility.HtmlDecode(Model.Title))
+    </div>
+    <div class="music-control col-md-3 col-xs-3">
+        <a href="@Url.Action("RemoveMusic", "Playlist", new { playlistId = Model.Id, trackId = Model.TrackId, callback = true})" class="btn btn-danger">
+            <span class="glyphicon glyphicon-trash"></span> Remove
+        </a>
+    </div>
+</div>
