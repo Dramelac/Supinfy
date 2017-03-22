@@ -38,11 +38,9 @@ $(".toPlaylist").on("click", function (e) {
         async: true,
         success: function (result) {
             playlist = result.playlists;
-
-            var modalContent = document.getElementsByClassName("modal-body");
-            while (modalContent.firstChild) {
-                modalContent.removeChild(modalContent.firstChild);
-            }
+            var modalContent = document.getElementsByClassName("modal-body")[0];
+            //clear all content in .modal-body
+            modalContent.innerHTML = "";
             for (var i = 0; i < playlist.length; i++) {
                 var elem = document.createElement("form");
                 elem.className = "addToPlaylist";
@@ -67,7 +65,7 @@ $(".toPlaylist").on("click", function (e) {
                 mus.value = music;
                 elem.appendChild(mus);
 
-                modalContent[0].appendChild(elem);
+                modalContent.appendChild(elem);
                 $(".addToPlaylist").submit(function (e) {
                     e.preventDefault();
                     console.log("On y est frere");
