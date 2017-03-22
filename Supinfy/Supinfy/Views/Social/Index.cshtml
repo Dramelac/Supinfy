@@ -8,7 +8,7 @@
 @using (Html.BeginForm("SearchUser", "Social", FormMethod.Post))
 {
     <div class="form-horizontal">
-        <hr />
+        <hr/>
         <h3>Search user</h3>
         <div class="form-group">
             <label class="control-label col-md-2">Search query</label>
@@ -19,46 +19,49 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Find" class="btn btn-default" />
+                <input type="submit" value="Find" class="btn btn-default"/>
             </div>
         </div>
     </div>
 }
-<hr />
+<hr/>
 <h4>You have @Model.PendingFriends.ResultCount pending friend request.</h4>
 @foreach (var pfriend in Model.PendingFriends.ResultList)
 {
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-2">
             @Html.Label(pfriend.Name)
-            @*TODO : custom to button*@
-            @Html.ActionLink("Accept", "AddToFriend", new { friendId = pfriend.Id, callback = false })
-            @Html.ActionLink("Refuse", "RemoveFriend", new { friendId = pfriend.Id })
+        </div>
+        <div class="col-md-offset-1 col-md-9">
+            @Html.ActionLink(" Accept", "AddToFriend", new {friendId = pfriend.Id, callback = false}, new {@class = "btn btn-success glyphicon glyphicon-ok"})
+            @Html.ActionLink(" Refuse", "RemoveFriend", new {friendId = pfriend.Id}, new {@class = "btn btn-danger glyphicon glyphicon-remove"})
         </div>
     </div>
 }
 
-<hr />
+<hr/>
 <h4>You have @Model.Friends.ResultCount friend.</h4>
 @foreach (var pfriend in Model.WaitingFriends.ResultList)
 {
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-2">
             @Html.Label(pfriend.Name)
+        </div>
+        <div class="col-md-offset-1 col-md-9">
             <i>Waiting for confirmation</i>
-            @*TODO : custom to button*@
-            @Html.ActionLink("Cancel request", "RemoveFriend", new { friendId = pfriend.Id })
+            @Html.ActionLink(" Cancel", "RemoveFriend", new { friendId = pfriend.Id }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })
         </div>
     </div>
 }
 @foreach (var pfriend in Model.Friends.ResultList)
 {
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-2">
             @Html.Label(pfriend.Name)
-            @*TODO : custom to button*@
-            @Html.ActionLink("See user playlists", "UserPlaylist", new { friendId = pfriend.Id })
-            @Html.ActionLink("Remove friend", "RemoveFriend", new { friendId = pfriend.Id })
+        </div>
+        <div class="col-md-offset-1 col-md-9">
+            @Html.ActionLink(" Playlists", "UserPlaylist", new { friendId = pfriend.Id }, new { @class = "btn btn-info glyphicon glyphicon-th-list" })
+            @Html.ActionLink(" Remove", "RemoveFriend", new { friendId = pfriend.Id }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })
         </div>
     </div>
 }
