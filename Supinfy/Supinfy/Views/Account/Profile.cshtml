@@ -78,7 +78,7 @@ else if (Model.IsFriend)
 {
     <div class="row">
         <div class="col-md-12">
-            @Html.ActionLink(" Playlists", "UserPlaylist", "Social", new {friendId = Model.Id}, new {@class = "btn btn-info glyphicon glyphicon-th-list col-md-2 single-line"})
+            @Html.ActionLink(" Playlists", "UserPlaylist", "Playlist", new {friendId = Model.Id}, new {@class = "btn btn-info glyphicon glyphicon-th-list col-md-2 single-line"})
             @Html.ActionLink(" Remove", "RemoveFriend", "Social", new {friendId = Model.Id}, new {@class = "btn btn-danger glyphicon glyphicon-trash col-md-2 single-line"})
         </div>
     </div>

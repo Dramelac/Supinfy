@@ -55,23 +55,6 @@ namespace Supinfy.Controllers
             if (friend == null) return RedirectToAction("Index");
             UserDAO.RemoveFriend((Guid)Session[SessionKey.UserId], friendId);
             return RedirectToAction("Index");
-        }
-        public ActionResult UserPlaylist(Guid friendId)
-        {
-            if (Session[SessionKey.UserId] == null) return RedirectToAction("Login", "Account");
-
-            var friend = UserDAO.GetUser(friendId);
-            if (friend == null) return RedirectToAction("Index");
-            var user = UserDAO.GetUser((Guid)Session[SessionKey.UserId]);
-            if (user.Friends.Contains(friend) && friend.Friends.Contains(user))
-            {
-                var vm = PlaylistIndexVM.ToVM(friend.Playlists);
-                return View(vm);
-            }
-            else
-            {
-                return RedirectToAction("Index");
-            }
-        }        
+        }       
     }
 }

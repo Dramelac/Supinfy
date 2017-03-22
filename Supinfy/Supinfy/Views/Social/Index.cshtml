@@ -61,7 +61,7 @@
         <div class="col-md-12">
             <div class="friend-name col-md-2">@pfriend.Name</div>
             <div class="col-md-5">
-                <a href="@Url.Action("UserPlaylist", new { friendId = pfriend.Id })" class="btn btn-info col-md-4 single-line">
+                <a href="@Url.Action("UserPlaylist", "Playlist", new { friendId = pfriend.Id })" class="btn btn-info col-md-4 single-line">
                     <span class="glyphicon glyphicon-th-list"></span> Playlists
                 </a>
                 <a href="@Url.Action("RemoveFriend", new { friendId = pfriend.Id })" class="btn btn-danger col-md-4 single-line">
