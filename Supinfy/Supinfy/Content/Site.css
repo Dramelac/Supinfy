@@ -106,9 +106,16 @@ h2
 {
     font-family: Fuji;
     font-size: 40px;
-
 }
 
+#backGround
+{
+    font-family: Fuji;
+    font-size: 250px;
+    color: #58b740;
+    opacity : 0.3;
+    z-index: 1;
+}
 @font-face {
     font-family: Fuji;
     src: url('Fuji Quake Zone.ttf');
