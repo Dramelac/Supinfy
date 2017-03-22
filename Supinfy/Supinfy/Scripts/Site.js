@@ -86,7 +86,6 @@ $(".toPlaylist").on("click", function (e) {
                     data: $(this).serialize(),
 
                     success: function (data) {
-                        alert(decodeURIComponent(("Added to the Playlist")));
                         $("#modalAddToPlaylist").modal("hide");
                     }
                 });
