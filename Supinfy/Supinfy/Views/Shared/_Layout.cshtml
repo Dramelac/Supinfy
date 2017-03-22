@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Scripts.Render("~/bundles/modernizr")
@@ -10,89 +10,106 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("SUPINFY", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("Social", "Index", "Social")</li>
+                <li>@Html.ActionLink("Playlist", "Index", "Playlist")</li>
+                <li>@Html.ActionLink("Top100", "Top100", "Music")</li>
+            </ul>
+            @using (Html.BeginForm("SearchMusic", "Music", FormMethod.Post, new {@class = "navbar-form navbar-left navbar-input-group"}))
+            {
+                <div class="form-group">
+                    <input type="text" class="form-control" name="search" placeholder="Search a music">
+                </div>
+                <button type="submit" class="btn btn-default">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 </button>
-                @Html.ActionLink("SUPINFY", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Social", "Index", "Social")</li>
-                    <li>@Html.ActionLink("Playlist", "Index", "Playlist")</li>
-                    <li>@Html.ActionLink("Top100", "Top100", "Music")</li>
-                </ul>
-                @using (Html.BeginForm("SearchMusic", "Music", FormMethod.Post, new { @class = "navbar-form navbar-left navbar-input-group" }))
+            }
+            <ul class="nav navbar-nav navbar-right">
+                @if (Session[SessionKey.UserId] == null)
                 {
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="search" placeholder="Search a music">
-                    </div>
-                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                    <li>
+                        <a href="@Url.Action("Login", "Account")">
+                            <span class="glyphicon glyphicon-log-in"></span> Login
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Register", "Account")">
+                            <span class="glyphicon glyphicon-edit"></span> Register
+                        </a>
+                    </li>
                 }
-                <ul class="nav navbar-nav navbar-right">
-                    @if (Session[SessionKey.UserId] == null)
-                    {
+                else
+                {
+                    <li>
+                        <a href="@Url.Action("Profile", "Account", new {user = Session[SessionKey.Username].ToString()})">
+                            <span class="glyphicon glyphicon-user"></span> @Session[SessionKey.Username].ToString()
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Logout", "Account")">
+                            <span class="glyphicon glyphicon-log-out"></span> Logout
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container body-content">
+    @RenderBody()
+    <br/>
+    <hr/>
 
-                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
-                        <li>@Html.ActionLink("Register", "Register", "Account")</li>
-                    }
-                    else
-                    {
-                        <li>@Html.ActionLink(Session[SessionKey.Username].ToString(), "Profile", "Account", new {user = Session[SessionKey.Username].ToString() }, null)</li>
-                        <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
-                    }
-                </ul>
+</div>
+<div id="player_container">
+    <div class="col-xs-2 col-md-2 col-md-offset-2">
+        <img src="" id="artwork"/>
+    </div>
+    <div class="col-xs-5 col-md-4" id="player_music_name">
+    </div>
+    <div class="col-xs-5 col-md-4">
+        <audio controls="controls" id="player"></audio>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalAddToPlaylist" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Choose your playlist</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <br />
-        <hr />
-
-    </div>
-    <div id="player_container">
-        <div class="col-xs-2 col-md-2 col-md-offset-2">
-            <img src="" id="artwork" />
-        </div>
-        <div class="col-xs-5 col-md-4" id="player_music_name">
-        </div>
-        <div class="col-xs-5 col-md-4">
-            <audio controls="controls" id="player"></audio>
-        </div>
-        </div>
-    
-    
-    <!-- Modal -->
-    <div class="modal fade" id="modalAddToPlaylist" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Choose your playlist</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
 
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/Scripts/Site.js")
-    @Scripts.Render("~/")
-    @RenderSection("scripts", required: false)
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/Scripts/Site.js")
+@Scripts.Render("~/")
+@RenderSection("scripts", required: false)
 
 </body>
 </html>
