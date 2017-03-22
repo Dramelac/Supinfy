@@ -20,34 +20,41 @@
 <hr />
 <h4>You have @Model.PendingFriends.ResultCount pending friend request.</h4>
 @foreach (var pfriend in Model.PendingFriends.ResultList)
-{
+{   
+    <br />
     <div class="row">
-        <div class="col-md-4">
-            @Html.Label(pfriend.Name)
-            @Html.ActionLink("Accept", "AddToFriend", new { friendId = pfriend.Id, callback = false, @class = "btn btn-primary" })
-            @Html.ActionLink("Refuse", "RemoveFriend", new { friendId = pfriend.Id }, new { @class = "btn btn-danger" })
+        <div class="col-md-12">
+            <div class="friend-name col-md-2">@pfriend.Name</div>
+            <div class="col-md-5">
+                @Html.ActionLink("Accept", "AddToFriend", new { friendId = pfriend.Id, callback = false}, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Refuse", "RemoveFriend", new { friendId = pfriend.Id }, new { @class = "btn btn-danger" })
+            </div>
         </div>
     </div>
 }
-
+<br />
 <hr />
 <h4>You have @Model.Friends.ResultCount friend.</h4>
 @foreach (var pfriend in Model.WaitingFriends.ResultList)
 {
+    <br />
     <div class="row">
-        <div class="col-md-4">
-            @Html.Label(pfriend.Name)
-            <i>Waiting for confirmation</i>
-            @Html.ActionLink("Cancel request", "RemoveFriend", new { friendId = pfriend.Id }, new { @class = "btn btn-danger" })
-        </div>
+        <div class="col-md-12">
+            <div class="friend-name col-md-2">@pfriend.Name</div>
+            <div class="col-md-5">
+                <i>Waiting for confirmation</i>
+                @Html.ActionLink("Cancel request", "RemoveFriend", new { friendId = pfriend.Id }, new { @class = "btn btn-danger" })
+            </div>
+         </div>
     </div>
 }
 @foreach (var pfriend in Model.Friends.ResultList)
 {
+    <br />
     <div class="row">
         <div class="col-md-12">
             <div class="friend-name col-md-2">@pfriend.Name</div>
-            <div class="friend-name col-md-5">
+            <div class="col-md-5">
                 @Html.ActionLink("See user playlists", "UserPlaylist", new { friendId = pfriend.Id }, new { @class = "btn btn-primary" })
                 @Html.ActionLink("Remove friend", "RemoveFriend", new { friendId = pfriend.Id }, new { @class = "btn btn-danger" })
             </div>
