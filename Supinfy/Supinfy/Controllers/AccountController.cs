@@ -72,6 +72,10 @@ namespace Supinfy.Controllers
         #region Profile
         public ActionResult Profile(string user)
         {
+            if (Session[SessionKey.UserId] == null)
+            {
+                return new HttpNotFoundResult();
+            }
             var usr = UserDAO.GetUserFromUsername(user);
             if (usr == null)
             {
