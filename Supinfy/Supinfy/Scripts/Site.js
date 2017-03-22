@@ -29,18 +29,22 @@ $(".music").on("click", function (e) {
 
 
 $(".toPlaylist").on("click", function (e) {
+    e.preventDefault();
     var playlist;
     var music = $(this).closest(".music").attr("data-id");
-    e.preventDefault();
+    var modalContent = document.getElementsByClassName("modal-body")[0];
+    //clear all content in .modal-body
+    modalContent.innerHTML = "";
     $.ajax({
         url:  ("/Playlist/Ajax_ListPlaylist"),
         type: 'POST',
         async: true,
         success: function (result) {
             playlist = result.playlists;
-            var modalContent = document.getElementsByClassName("modal-body")[0];
-            //clear all content in .modal-body
-            modalContent.innerHTML = "";
+            if (playlist.length == 0) {
+                modalContent.innerHTML = "You have no playlist";
+                return;
+            }
             for (var i = 0; i < playlist.length; i++) {
                 var elem = document.createElement("form");
                 elem.className = "addToPlaylist";
@@ -66,27 +70,22 @@ $(".toPlaylist").on("click", function (e) {
                 elem.appendChild(mus);
 
                 modalContent.appendChild(elem);
-                $(".addToPlaylist").submit(function (e) {
-                    e.preventDefault();
-                    console.log("On y est frere");
-                    $.ajax({
-                        url: ("/Playlist/Ajax_AddMusic"),
-                        type: 'POST',
-                        data: $(this).serialize(),
-
-                        success: function (data) {
-                            alert(decodeURIComponent(("Added to the Playlist")));
-                        }
-
-                    });
-
-                });
-
-
-
+                modalContent.appendChild(document.createElement("br"));
             }
-        }
+            $(".addToPlaylist").submit(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: ("/Playlist/Ajax_AddMusic"),
+                    type: 'POST',
+                    data: $(this).serialize(),
 
+                    success: function (data) {
+                        alert(decodeURIComponent(("Added to the Playlist")));
+                        $("#modalAddToPlaylist").modal("hide");
+                    }
+                });
+            });
+        }
     });
-    });
+});
 

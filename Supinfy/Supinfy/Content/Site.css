@@ -32,6 +32,7 @@ body{
 }
 .navbar-brand, .nav li a {
     color: white!important;
+    font-weight: bold;
 }
 hr {
     border-top: 1px solid #c1c1c1;
