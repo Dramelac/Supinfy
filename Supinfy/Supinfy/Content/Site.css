@@ -44,6 +44,7 @@ hr {
     padding: 15px 0px 15px 0px;
     transition: all 0.3s ease-in-out;
     height: 120px;
+    background: rgba(143, 214, 125, 0.15); ;
 }
 .music:hover {
     background: #8fd67d;
@@ -108,13 +109,10 @@ h2
     font-size: 40px;
 }
 
-#backGround
+body
 {
-    font-family: Fuji;
-    font-size: 250px;
-    color: #58b740;
-    opacity : 0.3;
-    z-index: 1;
+background:url(supinfy.png) no-repeat fixed center;
+background-size: 90%;
 }
 @font-face {
     font-family: Fuji;
