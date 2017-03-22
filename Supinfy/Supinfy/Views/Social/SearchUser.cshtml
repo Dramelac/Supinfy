@@ -19,7 +19,7 @@ else
                 <hr />
                 <br />
                 <div class="friend-name col-md-2">@user.Name</div>
-                @Html.ActionLink("Add a friend", "AddToFriend", new {friendId = user.Id}, new { @class = "btn btn-primary" })
+                @Html.ActionLink(" Add", "AddToFriend", new {friendId = user.Id}, new { @class = "btn btn-success glyphicon glyphicon-plus" })
             </div>
         </div>
     }
