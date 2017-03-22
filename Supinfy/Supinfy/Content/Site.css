@@ -39,14 +39,19 @@ hr {
     margin-top: 0px;
     margin-bottom: 0px;
 }
-.music
+
+.playlist-name {
+    font-size:25px;
+    font-weight: bold;
+}
+.music, .playlist
 {
     padding: 15px 0px 15px 0px;
     transition: all 0.3s ease-in-out;
     height: 120px;
     background: rgba(143, 214, 125, 0.15); ;
 }
-.music:hover {
+.music:hover, .playlist:hover {
     background: #8fd67d;
     cursor: pointer;
     height: 150px;

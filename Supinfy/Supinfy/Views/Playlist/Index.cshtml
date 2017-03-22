@@ -10,13 +10,23 @@
 
 @foreach (var playlist in Model.Playlists)
 {
-    <div class="row">
-        <hr/>
-        <div class="col-md-4">
-            <h2>@Html.ActionLink(playlist.Name, "Detail", new { id = playlist.Id })</h2>
-            <p>Created by @Html.DisplayFor(m => playlist.OwnerName), this playlist contains @Html.DisplayFor(m => playlist.MusicCount) track@(playlist.MusicCount > 0 ? "s" : "")</p>
-            <i>@Html.Label(playlist.CreationDate.ToShortDateString())</i><br/>
-            @Html.ActionLink("Remove playlist", "Remove", new { playlistId = playlist.Id})
+    <hr />
+    <div class="row playlist" data-id="@playlist.Id">
+        <div class="col-md-12">
+            <div class="col-md-2 col-md-offset-1 col-xs-3 playlist-name">
+                @playlist.Name
+            </div>
+            <div class="col-md-6 col-xs-6">
+                Created by @Html.DisplayFor(m => playlist.OwnerName), this playlist contains @Html.DisplayFor(m => playlist.MusicCount) track@(playlist.MusicCount > 0 ? "s" : "")
+                <br />
+                <i>@Html.Label(playlist.CreationDate.ToShortDateString())</i>
+            </div>
+            <div class="col-md-3 col-xs-3">
+                <a href="@Url.Action("Remove", new { playlistId = playlist.Id })" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-trash"></span> Remove playlist
+                </a>
+            </div>
+
         </div>
     </div>
 }

@@ -26,8 +26,12 @@
         <div class="col-md-12">
             <div class="friend-name col-md-2">@pfriend.Name</div>
             <div class="col-md-5">
-                @Html.ActionLink(" Accept", "AddToFriend", new {friendId = pfriend.Id, callback = false}, new {@class = "btn btn-success glyphicon glyphicon-ok col-md-4 single-line" })
-                @Html.ActionLink(" Refuse", "RemoveFriend", new {friendId = pfriend.Id}, new {@class = "btn btn-danger glyphicon glyphicon-remove col-md-4 single-line" })
+                <a href="@Url.Action("AddToFriend", new { friendId = pfriend.Id, callback = false })" class="btn btn-success col-md-4 single-line">
+                    <span class="glyphicon glyphicon-ok"></span> Accept
+                </a>
+                <a href="@Url.Action("RemoveFriend", new { friendId = pfriend.Id })" class="btn btn-danger col-md-4 single-line">
+                    <span class="glyphicon glyphicon-remove"></span> Refuse
+                </a>
             </div>
         </div>
     </div>
@@ -43,7 +47,9 @@
             <div class="friend-name col-md-2">@pfriend.Name</div>
             <div class="col-md-5">
                 <i class="col-md-6 single-line">Waiting for confirmation</i>
-                @Html.ActionLink(" Cancel", "RemoveFriend", new { friendId = pfriend.Id }, new { @class = "btn btn-danger glyphicon glyphicon-trash col-md-4 single-line" })
+                <a href="@Url.Action("RemoveFriend", new { friendId = pfriend.Id })" class="btn btn-danger col-md-4 single-line">
+                    <span class="glyphicon glyphicon-trash"></span> Cancel
+                </a>
             </div>
          </div>
     </div>
@@ -55,8 +61,12 @@
         <div class="col-md-12">
             <div class="friend-name col-md-2">@pfriend.Name</div>
             <div class="col-md-5">
-                @Html.ActionLink(" Playlists", "UserPlaylist", new { friendId = pfriend.Id }, new { @class = "btn btn-info glyphicon glyphicon-th-list col-md-4 single-line" })
-                @Html.ActionLink(" Remove", "RemoveFriend", new { friendId = pfriend.Id }, new { @class = "btn btn-danger glyphicon glyphicon-trash col-md-4 single-line" })
+                <a href="@Url.Action("UserPlaylist", new { friendId = pfriend.Id })" class="btn btn-info col-md-4 single-line">
+                    <span class="glyphicon glyphicon-th-list"></span> Playlists
+                </a>
+                <a href="@Url.Action("RemoveFriend", new { friendId = pfriend.Id })" class="btn btn-danger col-md-4 single-line">
+                    <span class="glyphicon glyphicon-trash"></span> Remove
+                </a>
             </div>
         </div>
     </div>

@@ -25,7 +25,13 @@ $(".music").on("click", function (e) {
     counter(this.dataset.id)
 });
 
-
+$(".playlist").on("click", function (e) {
+    if ($(e.target).hasClass("btn")) {
+        return;
+    }
+    var playlistId = $(this).data("id");
+    window.location = "/Playlist/Detail/" + playlistId;
+});
 
 
 $(".toPlaylist").on("click", function (e) {
