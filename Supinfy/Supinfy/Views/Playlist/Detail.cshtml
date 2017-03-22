@@ -4,7 +4,7 @@
 }
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <h2>Detail - @Html.DisplayFor(m => Model.Name)</h2>
         <p>Created by @Html.DisplayFor(m => Model.OwnerName), this playlist contains @Html.DisplayFor(m => Model.MusicCount) track@(Model.MusicCount > 0 ? "s" : "")</p>
         <i>@Html.Label(Model.CreationDate.ToShortDateString())</i><br />

@@ -5,10 +5,10 @@
     <div class="col-md-2 col-md-offset-1 col-xs-3">
         <img src="@Model.ArtworkUrl" alt="" />
     </div>
-    <div class="col-md-9 col-xs-9 music_name">
+    <div class="col-md-6 col-xs-6 music_name">
         @Html.Raw(HttpUtility.HtmlDecode(Model.Artist)) - @Html.Raw(HttpUtility.HtmlDecode(Model.Title))
     </div>
-    <div class="music-control">
+    <div class="music-control col-md-3 col-xs-3">
         <button class="toPlaylist glyphicon glyphicon-plus-sign btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
             Add To Playlist
         </button>

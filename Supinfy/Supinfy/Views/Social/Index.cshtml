@@ -12,56 +12,51 @@
         <h3>Search user</h3>
         <div class="form-group">
             <label class="control-label col-md-2">Search query</label>
-            <div class="col-md-10">
-                @Html.Editor("search")
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Find" class="btn btn-default"/>
-            </div>
+                @Html.Editor("search", new { htmlAttributes = new { @class = "form-control" } })
+                <input type="submit" value="Find" class="btn btn-default" />
         </div>
     </div>
 }
 <hr/>
 <h4>You have @Model.PendingFriends.ResultCount pending friend request.</h4>
 @foreach (var pfriend in Model.PendingFriends.ResultList)
-{
+{   
+    <br />
     <div class="row">
-        <div class="col-md-2">
-            @Html.Label(pfriend.Name)
-        </div>
-        <div class="col-md-offset-1 col-md-9">
-            @Html.ActionLink(" Accept", "AddToFriend", new {friendId = pfriend.Id, callback = false}, new {@class = "btn btn-success glyphicon glyphicon-ok"})
-            @Html.ActionLink(" Refuse", "RemoveFriend", new {friendId = pfriend.Id}, new {@class = "btn btn-danger glyphicon glyphicon-remove"})
+        <div class="col-md-12">
+            <div class="friend-name col-md-2">@pfriend.Name</div>
+            <div class="col-md-5">                
+                @Html.ActionLink(" Accept", "AddToFriend", new {friendId = pfriend.Id, callback = false}, new {@class = "btn btn-success glyphicon glyphicon-ok"})
+                @Html.ActionLink(" Refuse", "RemoveFriend", new {friendId = pfriend.Id}, new {@class = "btn btn-danger glyphicon glyphicon-remove"})
+            </div>
         </div>
     </div>
 }
-
-<hr/>
+<br />
+<hr />
 <h4>You have @Model.Friends.ResultCount friend.</h4>
 @foreach (var pfriend in Model.WaitingFriends.ResultList)
 {
+    <br />
     <div class="row">
-        <div class="col-md-2">
-            @Html.Label(pfriend.Name)
-        </div>
-        <div class="col-md-offset-1 col-md-9">
-            <i>Waiting for confirmation</i>
-            @Html.ActionLink(" Cancel", "RemoveFriend", new { friendId = pfriend.Id }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })
-        </div>
+        <div class="col-md-12">
+            <div class="friend-name col-md-2">@pfriend.Name</div>
+            <div class="col-md-5">
+                <i>Waiting for confirmation</i>                @Html.ActionLink(" Cancel", "RemoveFriend", new { friendId = pfriend.Id }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })
+            </div>
+         </div>
     </div>
 }
 @foreach (var pfriend in Model.Friends.ResultList)
 {
+    <br />
     <div class="row">
-        <div class="col-md-2">
-            @Html.Label(pfriend.Name)
-        </div>
-        <div class="col-md-offset-1 col-md-9">
-            @Html.ActionLink(" Playlists", "UserPlaylist", new { friendId = pfriend.Id }, new { @class = "btn btn-info glyphicon glyphicon-th-list" })
-            @Html.ActionLink(" Remove", "RemoveFriend", new { friendId = pfriend.Id }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })
+        <div class="col-md-12">
+            <div class="friend-name col-md-2">@pfriend.Name</div>
+            <div class="col-md-5">                
+                @Html.ActionLink(" Playlists", "UserPlaylist", new { friendId = pfriend.Id }, new { @class = "btn btn-info glyphicon glyphicon-th-list" })
+                @Html.ActionLink(" Remove", "RemoveFriend", new { friendId = pfriend.Id }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })
+            </div>
         </div>
     </div>
 }

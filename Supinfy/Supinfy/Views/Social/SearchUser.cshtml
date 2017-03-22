@@ -1,6 +1,6 @@
 ﻿@model Supinfy.ViewModel.UserSearchResultVM
 @{
-    ViewBag.Title = "SearchUser";
+    ViewBag.Title = "Search a User";
 }
 
 <h2>SearchUser</h2>
@@ -15,10 +15,11 @@ else
     foreach (var user in Model.ResultList)
     {
         <div class="row">
-            <hr />
-            <div class="col-md-4">
-                @Html.Label(user.Name)
-                @Html.ActionLink("Add a friend", "AddToFriend", new {friendId = user.Id})
+            <div class="col-md-12">
+                <hr />
+                <br />
+                <div class="friend-name col-md-2">@user.Name</div>
+                @Html.ActionLink("Add a friend", "AddToFriend", new {friendId = user.Id}, new { @class = "btn btn-primary" })
             </div>
         </div>
     }
